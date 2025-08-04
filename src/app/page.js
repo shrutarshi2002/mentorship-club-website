@@ -42,7 +42,7 @@ export default function Home() {
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [currentSlide]);
+  }, [currentSlide, nextSlide]);
 
   const nextSlide = () => {
     if (!isTransitioning) {
@@ -304,7 +304,7 @@ export default function Home() {
               </h3>
               <p className="text-gray-600">
                 Learn from industry professionals and experienced mentors who
-                have walked the path you're on.
+                have walked the path you&apos;re on.
               </p>
             </div>
 
@@ -329,7 +329,7 @@ export default function Home() {
               </h3>
               <p className="text-gray-600">
                 Join a network of like-minded individuals who support and
-                encourage each other's growth.
+                encourage each other&apos;s growth.
               </p>
             </div>
 
@@ -595,9 +595,9 @@ export default function Home() {
                 <h3 className="text-xl font-bold">Success Stories</h3>
               </div>
               <p className="text-blue-100">
-                "The mentorship program completely changed my career trajectory.
+                &ldquo;The mentorship program completely changed my career trajectory.
                 I went from feeling stuck to landing my dream job within 6
-                months."
+                months.&rdquo;
               </p>
               <div className="mt-4 text-sm text-blue-200">
                 - Sarah Johnson, Software Engineer
@@ -624,8 +624,8 @@ export default function Home() {
                 <h3 className="text-xl font-bold">Measurable Results</h3>
               </div>
               <p className="text-blue-100">
-                "Our mentees see an average 40% increase in confidence and 60%
-                improvement in career satisfaction within the first year."
+                &ldquo;Our mentees see an average 40% increase in confidence and 60%
+                improvement in career satisfaction within the first year.&rdquo;
               </p>
               <div className="mt-4 text-sm text-blue-200">
                 - Program Analytics
