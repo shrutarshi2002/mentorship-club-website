@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const slides = [
   {
@@ -44,7 +44,7 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [currentSlide, nextSlide]);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     if (!isTransitioning) {
       setIsTransitioning(true);
       setTimeout(() => {
@@ -52,7 +52,7 @@ export default function Home() {
         setIsTransitioning(false);
       }, 300);
     }
-  };
+  }, [isTransitioning]);
 
   const prevSlide = () => {
     if (!isTransitioning) {
@@ -451,7 +451,7 @@ export default function Home() {
                     Skill Building
                   </h3>
                   <p className="text-gray-600">
-                    Master practical skills that are in high demand in today's
+                    Master practical skills that are in high demand in today&apos;s
                     competitive market.
                   </p>
                 </div>
@@ -551,7 +551,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-4">Our Impact</h2>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
               See the real difference our mentorship programs are making in
-              people's lives.
+              people&apos;s lives.
             </p>
           </div>
 
@@ -595,9 +595,9 @@ export default function Home() {
                 <h3 className="text-xl font-bold">Success Stories</h3>
               </div>
               <p className="text-blue-100">
-                &ldquo;The mentorship program completely changed my career trajectory.
-                I went from feeling stuck to landing my dream job within 6
-                months.&rdquo;
+                &ldquo;The mentorship program completely changed my career
+                trajectory. I went from feeling stuck to landing my dream job
+                within 6 months.&rdquo;
               </p>
               <div className="mt-4 text-sm text-blue-200">
                 - Sarah Johnson, Software Engineer
@@ -624,8 +624,9 @@ export default function Home() {
                 <h3 className="text-xl font-bold">Measurable Results</h3>
               </div>
               <p className="text-blue-100">
-                &ldquo;Our mentees see an average 40% increase in confidence and 60%
-                improvement in career satisfaction within the first year.&rdquo;
+                &ldquo;Our mentees see an average 40% increase in confidence and
+                60% improvement in career satisfaction within the first
+                year.&rdquo;
               </p>
               <div className="mt-4 text-sm text-blue-200">
                 - Program Analytics
