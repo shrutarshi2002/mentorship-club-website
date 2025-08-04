@@ -36,14 +36,6 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      nextSlide();
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, [currentSlide, nextSlide]);
-
   const nextSlide = useCallback(() => {
     if (!isTransitioning) {
       setIsTransitioning(true);
@@ -52,9 +44,17 @@ export default function Home() {
         setIsTransitioning(false);
       }, 300);
     }
-  }, [isTransitioning]);
+  }, [isTransitioning, slides.length]);
 
-  const prevSlide = () => {
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
+  const prevSlide = useCallback(() => {
     if (!isTransitioning) {
       setIsTransitioning(true);
       setTimeout(() => {
@@ -62,9 +62,9 @@ export default function Home() {
         setIsTransitioning(false);
       }, 300);
     }
-  };
+  }, [isTransitioning, slides.length]);
 
-  const goToSlide = (index) => {
+  const goToSlide = useCallback((index) => {
     if (!isTransitioning && index !== currentSlide) {
       setIsTransitioning(true);
       setTimeout(() => {
@@ -72,7 +72,7 @@ export default function Home() {
         setIsTransitioning(false);
       }, 300);
     }
-  };
+  }, [isTransitioning, currentSlide]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -451,8 +451,8 @@ export default function Home() {
                     Skill Building
                   </h3>
                   <p className="text-gray-600">
-                    Master practical skills that are in high demand in today&apos;s
-                    competitive market.
+                    Master practical skills that are in high demand in
+                    today&apos;s competitive market.
                   </p>
                 </div>
               </div>
