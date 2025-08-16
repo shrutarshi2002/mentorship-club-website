@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function About() {
   const [isVisible, setIsVisible] = useState({});
@@ -136,7 +138,7 @@ export default function About() {
       number: "06",
       title: "Impact Measurement",
       description:
-        "We continuously measure and analyze the impact of our programs to ensure we're delivering real value and improving outcomes.",
+        "We continuously measure and analyze the impact of our programs to ensure we&apos;re delivering real value and improving outcomes.",
       color: "from-cyan-500 to-blue-600",
     },
   ];
@@ -167,7 +169,7 @@ export default function About() {
       year: "2024+",
       title: "Today & Beyond",
       description:
-        "With over 500 active mentees and 150 expert mentors, we're now a thriving ecosystem making a real difference globally.",
+        "With over 500 active mentees and 150 expert mentors, we&apos;re now a thriving ecosystem making a real difference globally.",
       color: "from-red-500 to-orange-600",
     },
   ];
@@ -242,10 +244,11 @@ export default function About() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center space-x-3">
-                <img
+                <Image
                   src="/assets/logo.png"
                   alt="MentorshipClub Logo"
-                  className="h-10 w-10 object-contain"
+                  width={40}
+                  height={40}
                 />
                 <h1 className="text-2xl font-bold">
                   <span className="text-yellow-500">Mentorship</span>
@@ -255,36 +258,36 @@ export default function About() {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <a
+                <Link
                   href="/"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Home
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Programs
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Mentors
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/about"
                   className="text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   About
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -298,9 +301,9 @@ export default function About() {
             About <span className="text-red-600">Mentorship Club</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We're on a mission to transform lives through meaningful mentorship,
-            real-world skills, and authentic connections that go beyond
-            traditional education.
+            We&apos;re on a mission to transform lives through meaningful
+            mentorship, real-world skills, and authentic connections that go
+            beyond traditional education.
           </p>
         </div>
       </section>
@@ -378,8 +381,9 @@ export default function About() {
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Our Core Belief</h3>
                 <p className="text-red-50">
-                  "Success is not just about what you know, but about who you
-                  become and the relationships you build along the way."
+                  &ldquo;Success is not just about what you know, but about who
+                  you become and the relationships you build along the
+                  way.&rdquo;
                 </p>
               </div>
             </div>
@@ -547,8 +551,8 @@ export default function About() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-8">Our Story</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From a simple idea to a thriving community that's transforming
-              lives every day.
+              From a simple idea to a thriving community that&apos;s
+              transforming lives every day.
             </p>
           </div>
 
@@ -591,7 +595,7 @@ export default function About() {
               Our Approach
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We've developed a unique methodology that combines proven
+              We&apos;ve developed a unique methodology that combines proven
               mentorship principles with innovative technology.
             </p>
           </div>
@@ -756,10 +760,11 @@ export default function About() {
                     className={`bg-gradient-to-br ${member.color} p-6 text-white text-center`}
                   >
                     <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden bg-white/20">
-                      <img
+                      <Image
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-full object-cover"
+                        width={80}
+                        height={80}
                       />
                     </div>
                     <h3 className="text-xl font-bold mb-2">{member.name}</h3>
@@ -785,8 +790,9 @@ export default function About() {
                 Join Our Team
               </h3>
               <p className="text-gray-600 mb-6">
-                We're always looking for passionate individuals who share our
-                vision and want to make a difference in the world of mentorship.
+                We&apos;re always looking for passionate individuals who share
+                our vision and want to make a difference in the world of
+                mentorship.
               </p>
               <button className="bg-gradient-to-r from-red-600 to-pink-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-red-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
                 View Open Positions
@@ -805,7 +811,7 @@ export default function About() {
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               See the real difference our mentorship programs are making in
-              people's lives and communities around the world.
+              people&apos;s lives and communities around the world.
             </p>
           </div>
 
@@ -844,9 +850,9 @@ export default function About() {
                 <div className="space-y-4">
                   <div className="bg-white/10 p-4 rounded-2xl">
                     <p className="italic text-blue-100">
-                      "The mentorship program completely changed my career
+                      &ldquo;The mentorship program completely changed my career
                       trajectory. I went from feeling stuck to landing my dream
-                      job within 6 months."
+                      job within 6 months.&rdquo;
                     </p>
                     <p className="text-sm mt-2 text-blue-200">
                       - Sarah Johnson, Software Engineer
@@ -854,9 +860,9 @@ export default function About() {
                   </div>
                   <div className="bg-white/10 p-4 rounded-2xl">
                     <p className="italic text-blue-100">
-                      "As a mentor, I've learned as much from my mentees as they
-                      have from me. It's been an incredibly rewarding
-                      experience."
+                      &ldquo;As a mentor, I&apos;ve learned as much from my
+                      mentees as they have from me. It&apos;s been an incredibly
+                      rewarding experience.&rdquo;
                     </p>
                     <p className="text-sm mt-2 text-blue-200">
                       - Michael Chen, Tech Lead
@@ -919,7 +925,7 @@ export default function About() {
               <p className="text-gray-600 mb-6">
                 Whether you want to become a mentor, join as a mentee, or
                 support our mission, you can be part of the positive change
-                we're creating in the world.
+                we&apos;re creating in the world.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button className="bg-gradient-to-r from-red-600 to-pink-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-red-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
@@ -953,24 +959,24 @@ export default function About() {
               <h4 className="text-lg font-semibold mb-4">Programs</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Leadership Development
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Career Guidance
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Skill Building
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Personal Growth
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -979,24 +985,24 @@ export default function About() {
               <h4 className="text-lg font-semibold mb-4">Resources</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Blog
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Success Stories
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Events
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     FAQ
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

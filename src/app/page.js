@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const slides = [
   {
@@ -44,7 +46,7 @@ export default function Home() {
         setIsTransitioning(false);
       }, 300);
     }
-  }, [isTransitioning, slides.length]);
+  }, [isTransitioning]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -62,7 +64,7 @@ export default function Home() {
         setIsTransitioning(false);
       }, 300);
     }
-  }, [isTransitioning, slides.length]);
+  }, [isTransitioning]);
 
   const goToSlide = useCallback(
     (index) => {
@@ -77,6 +79,10 @@ export default function Home() {
     [isTransitioning, currentSlide]
   );
 
+  const callback = useCallback(() => {
+    // logic
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -85,10 +91,12 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center space-x-3">
-                <img
+                <Image
                   src="/assets/logo.png"
                   alt="MentorshipClub Logo"
-                  className="h-10 w-10 object-contain"
+                  width={40}
+                  height={40}
+                  className="object-contain"
                 />
                 <h1 className="text-2xl font-bold">
                   <span className="text-yellow-500">Mentorship</span>
@@ -98,12 +106,12 @@ export default function Home() {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <a
-                  href="#"
+                <Link
+                  href="/"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Home
-                </a>
+                </Link>
                 <a
                   href="#"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
@@ -231,11 +239,13 @@ export default function Home() {
                     <div className="hidden lg:block">
                       <div className="relative">
                         <div className="w-full h-[800px] rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                          <img
+                          <Image
                             src={slide.image}
                             alt={slide.title}
                             className="w-full h-full object-cover object-center"
                             loading="eager"
+                            width={800}
+                            height={800}
                           />
                         </div>
                       </div>
@@ -367,7 +377,7 @@ export default function Home() {
             </div>
 
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-6">
                 <svg
                   className="w-8 h-8 text-white"
                   fill="none"
@@ -378,527 +388,199 @@ export default function Home() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                    d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l9 7 9-7M3 17l9-7 9 7"
                   />
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Real Results
+                Real-World Projects
               </h3>
               <p className="text-gray-600">
-                See tangible improvements in your skills, confidence, and career
-                prospects through our proven methods.
+                Gain hands-on experience by working on projects that matter.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Programs Overview */}
-      <section className="py-20 bg-white">
+      {/* Testimonials */}
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Programs Overview
+              What Our Members Say
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover our comprehensive range of mentorship programs designed
-              to accelerate your personal and professional growth.
+              Don&apos;t just take our word for it. Hear what our members have
+              to say about their experience.
             </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Leadership Development
-                  </h3>
-                  <p className="text-gray-600">
-                    Build essential leadership skills through one-on-one
-                    coaching and group workshops.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Career Guidance
-                  </h3>
-                  <p className="text-gray-600">
-                    Navigate your career path with expert advice and industry
-                    insights.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Skill Building
-                  </h3>
-                  <p className="text-gray-600">
-                    Master practical skills that are in high demand in
-                    today&apos;s competitive market.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Personal Growth
-                  </h3>
-                  <p className="text-gray-600">
-                    Develop self-awareness, confidence, and emotional
-                    intelligence.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Networking
-                  </h3>
-                  <p className="text-gray-600">
-                    Connect with professionals and build valuable relationships
-                    in your field.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Acceleration
-                  </h3>
-                  <p className="text-gray-600">
-                    Fast-track your progress with proven strategies and
-                    methodologies.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Impact */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Our Impact</h2>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              See the real difference our mentorship programs are making in
-              people&apos;s lives.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">500+</div>
-              <div className="text-blue-200">Active Mentees</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">150+</div>
-              <div className="text-blue-200">Expert Mentors</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">95%</div>
-              <div className="text-blue-200">Success Rate</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">1000+</div>
-              <div className="text-blue-200">Lives Transformed</div>
-            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                    />
-                  </svg>
+                <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
+                  <Image
+                    src="/assets/testimonials/person1.jpg"
+                    alt="Person 1"
+                    className="w-full h-full object-cover"
+                    width={64}
+                    height={64}
+                  />
                 </div>
-                <h3 className="text-xl font-bold">Success Stories</h3>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    John Doe
+                  </h3>
+                  <p className="text-gray-600">Software Engineer</p>
+                </div>
               </div>
-              <p className="text-blue-100">
-                &ldquo;The mentorship program completely changed my career
-                trajectory. I went from feeling stuck to landing my dream job
-                within 6 months.&rdquo;
+              <p className="text-gray-700">
+                &quot;Being a part of the Mentorship Club has been a game
+                changer for my career. The guidance and support I&apos;ve
+                received are invaluable.&quot;
               </p>
-              <div className="mt-4 text-sm text-blue-200">
-                - Sarah Johnson, Software Engineer
-              </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
+                <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
+                  <Image
+                    src="/assets/testimonials/person2.jpg"
+                    alt="Person 2"
+                    className="w-full h-full object-cover"
+                    width={64}
+                    height={64}
+                  />
                 </div>
-                <h3 className="text-xl font-bold">Measurable Results</h3>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    Jane Smith
+                  </h3>
+                  <p className="text-gray-600">Product Manager</p>
+                </div>
               </div>
-              <p className="text-blue-100">
-                &ldquo;Our mentees see an average 40% increase in confidence and
-                60% improvement in career satisfaction within the first
-                year.&rdquo;
+              <p className="text-gray-700">
+                &quot;The Mentorship Club connected me with an amazing mentor
+                who helped me navigate my career path. I highly recommend this
+                to anyone looking to grow professionally.&quot;
               </p>
-              <div className="mt-4 text-sm text-blue-200">
-                - Program Analytics
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
+                  <Image
+                    src="/assets/testimonials/person3.jpg"
+                    alt="Person 3"
+                    className="w-full h-full object-cover"
+                    width={64}
+                    height={64}
+                  />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    Mike Johnson
+                  </h3>
+                  <p className="text-gray-600">UX Designer</p>
+                </div>
               </div>
+              <p className="text-gray-700">
+                &quot;I joined the Mentorship Club looking for guidance, and I
+                got so much more. The community is supportive, and the
+                mentorship is top-notch.&quot;
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
+                  <Image
+                    src="/assets/testimonials/person4.jpg"
+                    alt="Person 4"
+                    className="w-full h-full object-cover"
+                    width={64}
+                    height={64}
+                  />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    Emily Davis
+                  </h3>
+                  <p className="text-gray-600">Data Scientist</p>
+                </div>
+              </div>
+              <p className="text-gray-700">
+                &quot;The best decision I ever made for my career was joining
+                the Mentorship Club. The skills and connections I&apos;ve gained
+                are priceless.&quot;
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Get Involved */}
-      <section className="py-20 bg-gray-50">
+      {/* Call to Action */}
+      <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Get Involved
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ready to start your mentorship journey? Choose your path and take
-              the first step towards transformation.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">Become a Mentee</h3>
-                <p className="text-blue-100 mb-6">
-                  Ready to accelerate your growth? Join our community of
-                  learners and get personalized guidance from experienced
-                  mentors.
-                </p>
-                <ul className="space-y-2 text-blue-100">
-                  <li className="flex items-center">
-                    <svg
-                      className="w-5 h-5 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Personalized mentorship plan
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-5 h-5 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Access to expert mentors
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-5 h-5 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Community support network
-                  </li>
-                </ul>
-              </div>
-              <div className="p-8">
-                <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                  Apply as Mentee
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-gradient-to-r from-green-600 to-teal-600 p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">Become a Mentor</h3>
-                <p className="text-green-100 mb-6">
-                  Share your expertise and make a lasting impact. Help others
-                  grow while developing your leadership skills.
-                </p>
-                <ul className="space-y-2 text-green-100">
-                  <li className="flex items-center">
-                    <svg
-                      className="w-5 h-5 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Flexible mentoring schedule
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-5 h-5 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Leadership development
-                  </li>
-                  <li className="flex items-center">
-                    <svg
-                      className="w-5 h-5 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Professional recognition
-                  </li>
-                </ul>
-              </div>
-              <div className="p-8">
-                <button className="w-full bg-gradient-to-r from-green-600 to-teal-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105">
-                  Apply as Mentor
-                </button>
-              </div>
-            </div>
-          </div>
-
           <div className="text-center">
-            <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Not Sure Where to Start?
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Take our quick assessment to find the perfect mentorship program
-                for your goals and experience level.
-              </p>
-              <button className="bg-gradient-to-r from-gray-600 to-gray-700 text-white py-3 px-8 rounded-lg font-semibold hover:from-gray-700 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
-                Take Assessment
-              </button>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Ready to Transform Your Future?
+            </h2>
+            <p className="text-xl text-gray-300 mb-8">
+              Join the Mentorship Club today and take the first step towards a
+              brighter, more successful future.
+            </p>
+            <div className="flex justify-center">
+              <Link
+                href="/signup"
+                className="bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide"
+              >
+                Join Now
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="py-10 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-4">
-                <span className="text-yellow-500">Mentorship</span>
-                <span className="text-white">Club</span>
-              </h3>
-              <p className="text-gray-400">
-                Empowering the next generation of leaders through meaningful
-                mentorship and real-world skills.
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-center md:text-left mb-4 md:mb-0">
+              <Link href="/">
+                <Image
+                  src="/assets/logo.png"
+                  alt="MentorshipClub Logo"
+                  width={40}
+                  height={40}
+                  className="object-contain inline-block"
+                />
+              </Link>
+              <p className="text-gray-400 text-sm mt-2">
+                &copy; 2023 Mentorship Club. All rights reserved.
               </p>
             </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Programs</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Leadership Development
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Career Guidance
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Skill Building
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Personal Growth
-                  </a>
-                </li>
-              </ul>
+            <div className="flex space-x-4">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Terms of Service
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Contact Us
+              </a>
             </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Success Stories
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Events
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    FAQ
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>info@mentorshipclub.com</li>
-                <li>+1 (555) 123-4567</li>
-                <li>123 Mentorship Ave, City, State</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Mentorship Club. All rights reserved.</p>
           </div>
         </div>
       </footer>

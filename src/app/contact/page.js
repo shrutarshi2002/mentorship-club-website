@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState({});
@@ -81,7 +83,7 @@ export default function Contact() {
     {
       title: "Email Us",
       value: "info@mentorshipclub.com",
-      subtitle: "We'll respond within 24 hours",
+      subtitle: "We&apos;ll respond within 24 hours",
       icon: (
         <svg
           className="w-8 h-8"
@@ -221,10 +223,11 @@ export default function Contact() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center space-x-3">
-                <img
+                <Image
                   src="/assets/logo.png"
                   alt="MentorshipClub Logo"
-                  className="h-10 w-10 object-contain"
+                  width={40}
+                  height={40}
                 />
                 <h1 className="text-2xl font-bold">
                   <span className="text-yellow-500">Mentorship</span>
@@ -234,36 +237,36 @@ export default function Contact() {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <a
+                <Link
                   href="/"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Home
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Programs
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Mentors
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/about"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   About
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/contact"
                   className="text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -278,8 +281,8 @@ export default function Contact() {
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Have questions about our mentorship programs? Want to join our
-            community? We'd love to hear from you and help you get started on
-            your journey.
+            community? We&apos;d love to hear from you and help you get started
+            on your journey.
           </p>
         </div>
       </section>
@@ -308,7 +311,7 @@ export default function Contact() {
                     : "translate-y-20 opacity-0"
                 }`}
               >
-                <a
+                <Link
                   href={info.action}
                   className="block group"
                   target={info.action.startsWith("http") ? "_blank" : "_self"}
@@ -326,7 +329,7 @@ export default function Contact() {
                     <p className="text-2xl font-semibold mb-2">{info.value}</p>
                     <p className="text-white/80">{info.subtitle}</p>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -345,7 +348,7 @@ export default function Contact() {
               Send Us a Message
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Fill out the form below and we'll get back to you as soon as
+              Fill out the form below and we&apos;ll get back to you as soon as
               possible.
             </p>
           </div>
@@ -447,7 +450,7 @@ export default function Contact() {
                   <div className="mt-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-xl text-center">
                     <p className="font-semibold">Message sent successfully!</p>
                     <p className="text-sm">
-                      We'll get back to you within 24 hours.
+                      We&apos;ll get back to you within 24 hours.
                     </p>
                   </div>
                 )}
@@ -486,7 +489,7 @@ export default function Contact() {
                     : "translate-y-20 opacity-0"
                 }`}
               >
-                <a
+                <Link
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -500,7 +503,7 @@ export default function Contact() {
                     </div>
                     <h3 className="text-sm font-semibold">{social.name}</h3>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -583,24 +586,24 @@ export default function Contact() {
               <h4 className="text-lg font-semibold mb-4">Programs</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Leadership Development
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Career Guidance
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Skill Building
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Personal Growth
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -609,24 +612,24 @@ export default function Contact() {
               <h4 className="text-lg font-semibold mb-4">Resources</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Blog
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Success Stories
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     Events
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-white transition-colors">
                     FAQ
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
