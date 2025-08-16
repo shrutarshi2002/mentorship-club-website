@@ -8,27 +8,27 @@ const slides = [
     title: "Empowering Future Leaders",
     subtitle: "Beyond the Classroom",
     cta: "Become a Mentor / Mentee",
-    gradient: "from-blue-600 via-purple-600 to-indigo-700",
-    bgImage:
-      'url(\'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"%3E%3Cdefs%3E%3CradialGradient id="a" cx="50%25" cy="50%25" r="50%25"%3E%3Cstop offset="0%25" stop-color="%23667eea" stop-opacity="0.1"%3E%3C/stop%3E%3Cstop offset="100%25" stop-color="%23764ba2" stop-opacity="0.05"%3E%3C/stop%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width="100%25" height="100%25" fill="url(%23a)"%3E%3C/rect%3E%3C/svg%3E\')',
+    gradient: "from-white to-gray-50",
+    bgImage: "none",
+    image: "/assets/hero/img1.png",
   },
   {
     id: 2,
     title: "Not Just Exams—We Teach Life",
     subtitle: "Real Skills. Real Purpose.",
     cta: "Explore Programs",
-    gradient: "from-pink-500 via-red-500 to-yellow-500",
-    bgImage:
-      'url(\'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"%3E%3Cdefs%3E%3CradialGradient id="b" cx="50%25" cy="50%25" r="50%25"%3E%3Cstop offset="0%25" stop-color="%23f093fb" stop-opacity="0.1"%3E%3C/stop%3E%3Cstop offset="100%25" stop-color="%23f5576c" stop-opacity="0.05"%3E%3C/stop%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width="100%25" height="100%25" fill="url(%23b)"%3E%3C/rect%3E%3C/svg%3E\')',
+    gradient: "from-white to-gray-50",
+    bgImage: "none",
+    image: "/assets/hero/img2.png",
   },
   {
     id: 3,
     title: "Clarity. Confidence.",
     subtitle: "A Future They Can Own.",
     cta: "Learn More",
-    gradient: "from-cyan-400 via-blue-500 to-teal-500",
-    bgImage:
-      'url(\'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"%3E%3Cdefs%3E%3CradialGradient id="c" cx="50%25" cy="50%25" r="50%25"%3E%3Cstop offset="0%25" stop-color="%234facfe" stop-opacity="0.1"%3E%3C/stop%3E%3Cstop offset="100%25" stop-color="%2300f2fe" stop-opacity="0.05"%3E%3C/stop%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width="100%25" height="100%25" fill="url(%23c)"%3E%3C/rect%3E%3C/svg%3E\')',
+    gradient: "from-white to-gray-50",
+    bgImage: "none",
+    image: "/assets/hero/img3.png",
   },
 ];
 
@@ -64,15 +64,18 @@ export default function Home() {
     }
   }, [isTransitioning, slides.length]);
 
-  const goToSlide = useCallback((index) => {
-    if (!isTransitioning && index !== currentSlide) {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentSlide(index);
-        setIsTransitioning(false);
-      }, 300);
-    }
-  }, [isTransitioning, currentSlide]);
+  const goToSlide = useCallback(
+    (index) => {
+      if (!isTransitioning && index !== currentSlide) {
+        setIsTransitioning(true);
+        setTimeout(() => {
+          setCurrentSlide(index);
+          setIsTransitioning(false);
+        }, 300);
+      }
+    },
+    [isTransitioning, currentSlide]
+  );
 
   return (
     <div className="min-h-screen bg-white">
@@ -81,10 +84,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <h1 className="text-2xl font-bold text-gray-900">
-                  <span className="text-red-600">M</span>entorship
-                  <span className="text-blue-600">Club</span>
+              <div className="flex-shrink-0 flex items-center space-x-3">
+                <img
+                  src="/assets/logo.png"
+                  alt="MentorshipClub Logo"
+                  className="h-10 w-10 object-contain"
+                />
+                <h1 className="text-2xl font-bold">
+                  <span className="text-yellow-500">Mentorship</span>
+                  <span className="text-black">Club</span>
                 </h1>
               </div>
             </div>
@@ -109,13 +117,13 @@ export default function Home() {
                   Mentors
                 </a>
                 <a
-                  href="#"
+                  href="/about"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   About
                 </a>
                 <a
-                  href="#"
+                  href="/contact"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Contact
@@ -155,59 +163,84 @@ export default function Home() {
                 : "opacity-0 translate-x-full"
             }`}
             style={{
-              background: `linear-gradient(135deg, ${slide.gradient
-                .split(" ")
-                .map((color) => {
-                  const colorMap = {
-                    "from-blue-600": "#2563eb",
-                    "via-purple-600": "#9333ea",
-                    "to-indigo-700": "#4338ca",
-                    "from-pink-500": "#ec4899",
-                    "via-red-500": "#ef4444",
-                    "to-yellow-500": "#eab308",
-                    "from-cyan-400": "#22d3ee",
-                    "via-blue-500": "#3b82f6",
-                    "to-teal-500": "#14b8a6",
-                  };
-                  return colorMap[color] || color;
-                })
-                .join(", ")})`,
-              backgroundImage: slide.bgImage,
+              background:
+                slide.gradient === "from-white to-gray-50"
+                  ? "linear-gradient(135deg, #ffffff, #f9fafb)"
+                  : `linear-gradient(135deg, ${slide.gradient
+                      .split(" ")
+                      .map((color) => {
+                        const colorMap = {
+                          "from-blue-600": "#2563eb",
+                          "via-purple-600": "#9333ea",
+                          "to-indigo-700": "#4338ca",
+                          "from-pink-500": "#ec4899",
+                          "via-red-500": "#ef4444",
+                          "to-yellow-500": "#eab308",
+                          "from-cyan-400": "#22d3ee",
+                          "via-blue-500": "#3b82f6",
+                          "to-teal-500": "#14b8a6",
+                        };
+                        return colorMap[color] || color;
+                      })
+                      .join(", ")})`,
+              backgroundImage:
+                slide.bgImage === "none" ? "none" : slide.bgImage,
             }}
           >
-            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="absolute inset-0 bg-transparent"></div>
 
             {/* Content */}
-            <div className="relative h-full flex items-center justify-center">
-              <div className="text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-                <div
-                  className={`animate-fade-in-up ${
-                    index === currentSlide ? "animate-fade-in-up" : ""
-                  }`}
-                >
-                  <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-                    {slide.title}
-                  </h2>
-                </div>
+            <div className="relative h-full flex items-center">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  {/* Left Side - Content */}
+                  <div className="text-gray-900">
+                    <div
+                      className={`animate-fade-in-up ${
+                        index === currentSlide ? "animate-fade-in-up" : ""
+                      }`}
+                    >
+                      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        {slide.title}
+                      </h2>
+                    </div>
 
-                <div
-                  className={`animate-fade-in-up delay-200 ${
-                    index === currentSlide ? "animate-fade-in-up" : ""
-                  }`}
-                >
-                  <p className="text-xl sm:text-2xl lg:text-3xl font-light mb-8 text-gray-100">
-                    {slide.subtitle}
-                  </p>
-                </div>
+                    <div
+                      className={`animate-fade-in-up delay-200 ${
+                        index === currentSlide ? "animate-fade-in-up" : ""
+                      }`}
+                    >
+                      <p className="text-xl sm:text-2xl lg:text-3xl font-medium mb-8 text-red-600">
+                        {slide.subtitle}
+                      </p>
+                    </div>
 
-                <div
-                  className={`animate-fade-in-up delay-400 ${
-                    index === currentSlide ? "animate-fade-in-up" : ""
-                  }`}
-                >
-                  <button className="bg-white text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                    {slide.cta}
-                  </button>
+                    <div
+                      className={`animate-fade-in-up delay-400 ${
+                        index === currentSlide ? "animate-fade-in-up" : ""
+                      }`}
+                    >
+                      <button className="bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
+                        {slide.cta}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Right Side - Image */}
+                  {slide.image && (
+                    <div className="hidden lg:block">
+                      <div className="relative">
+                        <div className="w-full h-[800px] rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                          <img
+                            src={slide.image}
+                            alt={slide.title}
+                            className="w-full h-full object-cover object-center"
+                            loading="eager"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -259,10 +292,10 @@ export default function Home() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-4 h-4 rounded-full transition-all duration-300 border-2 ${
                 index === currentSlide
-                  ? "bg-white scale-125"
-                  : "bg-white/50 hover:bg-white/75"
+                  ? "bg-red-600 border-red-600 scale-125 shadow-lg"
+                  : "bg-white/80 border-gray-300 hover:bg-red-400 hover:border-red-400"
               }`}
             />
           ))}
@@ -793,8 +826,8 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <h3 className="text-2xl font-bold mb-4">
-                <span className="text-red-600">M</span>entorship
-                <span className="text-blue-600">Club</span>
+                <span className="text-yellow-500">Mentorship</span>
+                <span className="text-white">Club</span>
               </h3>
               <p className="text-gray-400">
                 Empowering the next generation of leaders through meaningful
