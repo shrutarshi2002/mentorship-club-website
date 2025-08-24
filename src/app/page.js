@@ -7,30 +7,41 @@ import Link from "next/link";
 const slides = [
   {
     id: 1,
-    title: "Empowering Future Leaders",
-    subtitle: "Beyond the Classroom",
-    cta: "Become a Mentor / Mentee",
+    title: "Learn Real-World Skills with Interactive Workshops",
+    subtitle:
+      "Live and self-paced workshops designed for students in grades 6–12. Explore topics like coding, design, public speaking, AI, and more.",
+    cta: "Browse All Workshops",
+    secondaryCta: "Book a Free Demo",
     gradient: "from-white to-gray-50",
     bgImage: "none",
     image: "/assets/hero/img1.png",
   },
   {
     id: 2,
-    title: "Not Just Exams—We Teach Life",
-    subtitle: "Real Skills. Real Purpose.",
-    cta: "Explore Programs",
+    title: "Empowering Future Leaders",
+    subtitle: "Beyond the Classroom",
+    cta: "Become a Mentor / Mentee",
     gradient: "from-white to-gray-50",
     bgImage: "none",
     image: "/assets/hero/img2.png",
   },
   {
     id: 3,
+    title: "Not Just Exams—We Teach Life",
+    subtitle: "Real Skills. Real Purpose.",
+    cta: "Explore Programs",
+    gradient: "from-white to-gray-50",
+    bgImage: "none",
+    image: "/assets/hero/img3.png",
+  },
+  {
+    id: 4,
     title: "Clarity. Confidence.",
     subtitle: "A Future They Can Own.",
     cta: "Learn More",
     gradient: "from-white to-gray-50",
     bgImage: "none",
-    image: "/assets/hero/img3.png",
+    image: "/assets/hero/img1.png",
   },
 ];
 
@@ -84,7 +95,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -218,7 +229,13 @@ export default function Home() {
                         index === currentSlide ? "animate-fade-in-up" : ""
                       }`}
                     >
-                      <p className="text-xl sm:text-2xl lg:text-3xl font-medium mb-8 text-red-600">
+                      <p
+                        className={`font-medium mb-8 text-red-600 ${
+                          slide.id === 1
+                            ? "text-lg sm:text-xl lg:text-2xl"
+                            : "text-xl sm:text-2xl lg:text-3xl"
+                        }`}
+                      >
                         {slide.subtitle}
                       </p>
                     </div>
@@ -228,9 +245,16 @@ export default function Home() {
                         index === currentSlide ? "animate-fade-in-up" : ""
                       }`}
                     >
-                      <button className="bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
-                        {slide.cta}
-                      </button>
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <button className="bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
+                          {slide.cta}
+                        </button>
+                        {slide.secondaryCta && (
+                          <button className="bg-transparent text-red-600 border-2 border-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-600 hover:text-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
+                            {slide.secondaryCta}
+                          </button>
+                        )}
+                      </div>
                     </div>
                   </div>
 
@@ -419,14 +443,8 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-2xl shadow-lg">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
-                  <Image
-                    src="/assets/testimonials/person1.jpg"
-                    alt="Person 1"
-                    className="w-full h-full object-cover"
-                    width={64}
-                    height={64}
-                  />
+                <div className="w-16 h-16 rounded-full overflow-hidden mr-4 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                  <span className="text-white text-xl font-bold">JD</span>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">
@@ -444,14 +462,8 @@ export default function Home() {
 
             <div className="bg-white p-8 rounded-2xl shadow-lg">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
-                  <Image
-                    src="/assets/testimonials/person2.jpg"
-                    alt="Person 2"
-                    className="w-full h-full object-cover"
-                    width={64}
-                    height={64}
-                  />
+                <div className="w-16 h-16 rounded-full overflow-hidden mr-4 bg-gradient-to-r from-pink-500 to-red-500 flex items-center justify-center">
+                  <span className="text-white text-xl font-bold">JS</span>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">
@@ -469,14 +481,8 @@ export default function Home() {
 
             <div className="bg-white p-8 rounded-2xl shadow-lg">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
-                  <Image
-                    src="/assets/testimonials/person3.jpg"
-                    alt="Person 3"
-                    className="w-full h-full object-cover"
-                    width={64}
-                    height={64}
-                  />
+                <div className="w-16 h-16 rounded-full overflow-hidden mr-4 bg-gradient-to-r from-green-500 to-teal-500 flex items-center justify-center">
+                  <span className="text-white text-xl font-bold">MJ</span>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">
@@ -494,14 +500,8 @@ export default function Home() {
 
             <div className="bg-white p-8 rounded-2xl shadow-lg">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
-                  <Image
-                    src="/assets/testimonials/person4.jpg"
-                    alt="Person 4"
-                    className="w-full h-full object-cover"
-                    width={64}
-                    height={64}
-                  />
+                <div className="w-16 h-16 rounded-full overflow-hidden mr-4 bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center">
+                  <span className="text-white text-xl font-bold">ED</span>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">
@@ -544,42 +544,141 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-10 bg-gray-800">
+      <footer className="py-16 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-center md:text-left mb-4 md:mb-0">
-              <Link href="/">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            {/* Mentorship Club Branding */}
+            <div className="col-span-1">
+              <div className="flex items-center space-x-3 mb-4">
                 <Image
                   src="/assets/logo.png"
                   alt="MentorshipClub Logo"
                   width={40}
                   height={40}
-                  className="object-contain inline-block"
+                  className="object-contain"
                 />
-              </Link>
-              <p className="text-gray-400 text-sm mt-2">
-                &copy; 2023 Mentorship Club. All rights reserved.
+                <h3 className="text-2xl font-bold">
+                  <span className="text-yellow-500">Mentorship</span>
+                  <span className="text-white">Club</span>
+                </h3>
+              </div>
+              <p className="text-white text-sm leading-relaxed">
+                Empowering the next generation of leaders through meaningful
+                mentorship and real-world skills.
               </p>
             </div>
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Terms of Service
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Contact Us
-              </a>
+
+            {/* Programs Section */}
+            <div className="col-span-1">
+              <h4 className="text-white font-bold text-lg mb-4">Programs</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    className="text-white hover:text-yellow-400 transition-colors text-sm"
+                  >
+                    Leadership Development
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white hover:text-yellow-400 transition-colors text-sm"
+                  >
+                    Career Guidance
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white hover:text-yellow-400 transition-colors text-sm"
+                  >
+                    Skill Building
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white hover:text-yellow-400 transition-colors text-sm"
+                  >
+                    Personal Growth
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Resources Section */}
+            <div className="col-span-1">
+              <h4 className="text-white font-bold text-lg mb-4">Resources</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    className="text-white hover:text-yellow-400 transition-colors text-sm"
+                  >
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white hover:text-yellow-400 transition-colors text-sm"
+                  >
+                    Success Stories
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white hover:text-yellow-400 transition-colors text-sm"
+                  >
+                    Events
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white hover:text-yellow-400 transition-colors text-sm"
+                  >
+                    FAQ
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Section */}
+            <div className="col-span-1">
+              <h4 className="text-white font-bold text-lg mb-4">Contact</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="mailto:info@mentorshipclub.com"
+                    className="text-white hover:text-yellow-400 transition-colors text-sm"
+                  >
+                    info@mentorshipclub.com
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:+15551234567"
+                    className="text-white hover:text-yellow-400 transition-colors text-sm"
+                  >
+                    +1 (555) 123-4567
+                  </a>
+                </li>
+                <li className="text-white text-sm">
+                  123 Mentorship Ave, City, State
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-gray-700 pt-8">
+            <div className="text-center">
+              <p className="text-white text-sm">
+                &copy; 2024 Mentorship Club. All rights reserved.
+              </p>
             </div>
           </div>
         </div>
