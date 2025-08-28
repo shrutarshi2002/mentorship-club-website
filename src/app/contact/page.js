@@ -244,13 +244,13 @@ export default function Contact() {
                   Home
                 </Link>
                 <Link
-                  href="#"
+                  href="/programs"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Programs
                 </Link>
                 <Link
-                  href="#"
+                  href="/mentors"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Mentors

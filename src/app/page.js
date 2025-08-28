@@ -123,30 +123,30 @@ export default function Home() {
                 >
                   Home
                 </Link>
-                <a
-                  href="#"
+                <Link
+                  href="/programs"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Programs
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  href="/mentors"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Mentors
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/about"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   About
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/contact"
                   className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
             <div className="md:hidden">
@@ -230,7 +230,7 @@ export default function Home() {
                       }`}
                     >
                       <p
-                        className={`font-medium mb-8 text-red-600 ${
+                        className={`font-medium mb-8 text-gray-700 ${
                           slide.id === 1
                             ? "text-lg sm:text-xl lg:text-2xl"
                             : "text-xl sm:text-2xl lg:text-3xl"
@@ -246,11 +246,11 @@ export default function Home() {
                       }`}
                     >
                       <div className="flex flex-col sm:flex-row gap-4">
-                        <button className="bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
+                        <button className="bg-yellow-400 text-black border-2 border-black px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
                           {slide.cta}
                         </button>
                         {slide.secondaryCta && (
-                          <button className="bg-transparent text-red-600 border-2 border-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-600 hover:text-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
+                          <button className="bg-transparent text-black border-2 border-black px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-400 hover:text-black transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
                             {slide.secondaryCta}
                           </button>
                         )}
@@ -423,6 +423,166 @@ export default function Home() {
                 Gain hands-on experience by working on projects that matter.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Programs Overview */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
+              Our Programs Overview
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Explore high-impact tracks designed to build real skills across
+              marketing, AI, and personal growth.
+            </p>
+          </div>
+
+          {(() => {
+            const programs = [
+              {
+                title: "Marketing & Branding",
+                desc: "How to shape and promote products, services, or yourself with clarity and creativity.",
+                image: "/assets/program/1.png",
+              },
+              {
+                title: "Social Media Strategy",
+                desc: "Understanding how platforms work and how to build an impactful online presence.",
+                image: "/assets/program/2.png",
+              },
+              {
+                title: "Content Creation",
+                desc: "Using design, video, and storytelling tools to create engaging content.",
+                image: "/assets/program/3.png",
+              },
+              {
+                title: "Digital Advertising",
+                desc: "Basics of running ad campaigns and reaching the right audience.",
+                image: "/assets/program/4.png",
+              },
+              {
+                title: "Influencer & Campaign Marketing",
+                desc: "Planning and executing influencer strategies and brand partnerships.",
+                image: "/assets/program/5.png",
+              },
+              {
+                title: "Entrepreneurial Marketing",
+                desc: "Turning ideas into offers, building funnels, and pitching with purpose.",
+                image: "/assets/program/6.png",
+              },
+              {
+                title: "AI Fundamentals",
+                desc: "Core AI concepts and understanding how AI is reshaping the world.",
+                image: "/assets/program/7.png",
+              },
+              {
+                title: "Prompt Engineering",
+                desc: "Using tools like ChatGPT for writing, thinking, and creativity.",
+                image: "/assets/program/8.png",
+              },
+              {
+                title: "No-Code AI Tools",
+                desc: "Creating simple apps or automations using visual platforms.",
+                image: "/assets/program/9.png",
+              },
+              {
+                title: "Mini Chatbot Projects",
+                desc: "Designing basic interactive bots that can assist or guide.",
+                image: "/assets/program/10.png",
+              },
+              {
+                title: "Python Basics",
+                desc: "Learning foundational programming skills through simple projects.",
+                image: "/assets/program/11.png",
+              },
+              {
+                title: "AI in Real Life",
+                desc: "Exploring how AI is applied in fields like health, art, business, and more.",
+                image: "/assets/program/12.png",
+              },
+              {
+                title: "Public Speaking",
+                desc: "Building confidence and clarity while communicating in front of others.",
+                image: "/assets/program/13.png",
+              },
+              {
+                title: "Pitching for Entrepreneurs",
+                desc: "Creating strong, clear pitches for projects, businesses, or ideas.",
+                image: "/assets/program/14.png",
+              },
+              {
+                title: "Creative Thinking",
+                desc: "Practicing innovation, brainstorming, and idea development.",
+                image: "/assets/program/15.png",
+              },
+              {
+                title: "Interview & Impression Skills",
+                desc: "Preparing to present yourself with clarity, confidence, and professionalism.",
+                image: "/assets/program/16.png",
+              },
+              {
+                title: "Networking & Conversation",
+                desc: "Strengthening real-world social interaction and connection skills.",
+                image: "/assets/program/17.png",
+              },
+              {
+                title: "Confidence & Presence",
+                desc: "Improving mindset, self-belief, and personal presence.",
+                image: "/assets/program/18.png",
+              },
+            ];
+
+            return (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {programs.map((p, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
+                  >
+                    {/* Program Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={p.image}
+                        alt={p.title}
+                        fill
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <div className="p-6">
+                      <div className="mb-3">
+                        <span className="inline-flex items-center gap-2 rounded-full bg-gray-50 px-3 py-1 text-xs font-semibold text-gray-600">
+                          <span className="block h-2 w-2 rounded-full bg-green-500"></span>
+                          Program
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        {p.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {p.desc}
+                      </p>
+                    </div>
+                    <div className="px-6 pb-6">
+                      <button className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-900 hover:border-gray-300 hover:bg-gray-50 transition-colors">
+                        View Program
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            );
+          })()}
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/programs"
+              className="inline-block rounded-xl bg-gray-900 text-white px-6 py-3 font-semibold hover:bg-black/90 transition-colors"
+            >
+              View All Programs
+            </Link>
           </div>
         </div>
       </section>
