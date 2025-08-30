@@ -10,6 +10,7 @@ export default function Programs() {
 
   const programs = [
     {
+      id: "marketing-branding",
       title: "Marketing & Branding",
       desc: "How to shape and promote products, services, or yourself with clarity and creativity.",
       image: "/assets/program/1.png",
@@ -18,6 +19,7 @@ export default function Programs() {
       level: "Beginner",
     },
     {
+      id: "social-media-strategy",
       title: "Social Media Strategy",
       desc: "Understanding how platforms work and how to build an impactful online presence.",
       image: "/assets/program/2.png",
@@ -26,6 +28,7 @@ export default function Programs() {
       level: "Beginner",
     },
     {
+      id: "content-creation",
       title: "Content Creation",
       desc: "Using design, video, and storytelling tools to create engaging content.",
       image: "/assets/program/3.png",
@@ -34,6 +37,7 @@ export default function Programs() {
       level: "Intermediate",
     },
     {
+      id: "digital-advertising",
       title: "Digital Advertising",
       desc: "Basics of running ad campaigns and reaching the right audience.",
       image: "/assets/program/4.png",
@@ -42,6 +46,7 @@ export default function Programs() {
       level: "Intermediate",
     },
     {
+      id: "influencer-campaign-marketing",
       title: "Influencer & Campaign Marketing",
       desc: "Planning and executing influencer strategies and brand partnerships.",
       image: "/assets/program/5.png",
@@ -50,6 +55,7 @@ export default function Programs() {
       level: "Advanced",
     },
     {
+      id: "entrepreneurial-marketing",
       title: "Entrepreneurial Marketing",
       desc: "Turning ideas into offers, building funnels, and pitching with purpose.",
       image: "/assets/program/6.png",
@@ -58,6 +64,7 @@ export default function Programs() {
       level: "Intermediate",
     },
     {
+      id: "ai-fundamentals",
       title: "AI Fundamentals",
       desc: "Core AI concepts and understanding how AI is reshaping the world.",
       image: "/assets/program/7.png",
@@ -66,6 +73,7 @@ export default function Programs() {
       level: "Beginner",
     },
     {
+      id: "prompt-engineering",
       title: "Prompt Engineering",
       desc: "Using tools like ChatGPT for writing, thinking, and creativity.",
       image: "/assets/program/8.png",
@@ -74,6 +82,7 @@ export default function Programs() {
       level: "Beginner",
     },
     {
+      id: "no-code-ai-tools",
       title: "No-Code AI Tools",
       desc: "Creating simple apps or automations using visual platforms.",
       image: "/assets/program/9.png",
@@ -82,6 +91,7 @@ export default function Programs() {
       level: "Beginner",
     },
     {
+      id: "mini-chatbot-projects",
       title: "Mini Chatbot Projects",
       desc: "Designing basic interactive bots that can assist or guide.",
       image: "/assets/program/10.png",
@@ -90,6 +100,7 @@ export default function Programs() {
       level: "Intermediate",
     },
     {
+      id: "python-basics",
       title: "Python Basics",
       desc: "Learning foundational programming skills through simple projects.",
       image: "/assets/program/11.png",
@@ -98,6 +109,7 @@ export default function Programs() {
       level: "Beginner",
     },
     {
+      id: "ai-in-real-life",
       title: "AI in Real Life",
       desc: "Exploring how AI is applied in fields like health, art, business, and more.",
       image: "/assets/program/12.png",
@@ -106,6 +118,7 @@ export default function Programs() {
       level: "Intermediate",
     },
     {
+      id: "public-speaking",
       title: "Public Speaking",
       desc: "Building confidence and clarity while communicating in front of others.",
       image: "/assets/program/13.png",
@@ -114,6 +127,7 @@ export default function Programs() {
       level: "Beginner",
     },
     {
+      id: "pitching-for-entrepreneurs",
       title: "Pitching for Entrepreneurs",
       desc: "Creating strong, clear pitches for projects, businesses, or ideas.",
       image: "/assets/program/14.png",
@@ -122,6 +136,7 @@ export default function Programs() {
       level: "Intermediate",
     },
     {
+      id: "creative-thinking",
       title: "Creative Thinking",
       desc: "Practicing innovation, brainstorming, and idea development.",
       image: "/assets/program/15.png",
@@ -130,6 +145,7 @@ export default function Programs() {
       level: "Beginner",
     },
     {
+      id: "interview-impression-skills",
       title: "Interview & Impression Skills",
       desc: "Preparing to present yourself with clarity, confidence, and professionalism.",
       image: "/assets/program/16.png",
@@ -138,6 +154,7 @@ export default function Programs() {
       level: "Intermediate",
     },
     {
+      id: "networking-conversation",
       title: "Networking & Conversation",
       desc: "Strengthening real-world social interaction and connection skills.",
       image: "/assets/program/17.png",
@@ -146,6 +163,7 @@ export default function Programs() {
       level: "Beginner",
     },
     {
+      id: "confidence-presence",
       title: "Confidence & Presence",
       desc: "Improving mindset, self-belief, and personal presence.",
       image: "/assets/program/18.png",
@@ -553,7 +571,7 @@ export default function Programs() {
                     <p className="text-gray-600 text-sm leading-relaxed mb-4">
                       {program.desc}
                     </p>
-                    <div className="flex items-center justify-between">
+                    <div className="space-y-4">
                       <div className="flex items-center gap-4 text-sm text-gray-500">
                         <span className="flex items-center gap-1">
                           <svg
@@ -588,9 +606,17 @@ export default function Programs() {
                           {program.level}
                         </span>
                       </div>
-                      <button className="bg-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors">
-                        Enroll Now
-                      </button>
+                      <div className="flex flex-col gap-2">
+                        <Link
+                          href={`/courses/${program.id}`}
+                          className="w-full bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors text-center"
+                        >
+                          View Program
+                        </Link>
+                        <button className="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                          Enroll Now
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

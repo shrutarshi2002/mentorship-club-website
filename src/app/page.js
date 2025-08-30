@@ -443,91 +443,109 @@ export default function Home() {
           {(() => {
             const programs = [
               {
+                id: "marketing-branding",
                 title: "Marketing & Branding",
                 desc: "How to shape and promote products, services, or yourself with clarity and creativity.",
                 image: "/assets/program/1.png",
               },
               {
+                id: "social-media-strategy",
                 title: "Social Media Strategy",
                 desc: "Understanding how platforms work and how to build an impactful online presence.",
                 image: "/assets/program/2.png",
               },
               {
+                id: "content-creation",
                 title: "Content Creation",
                 desc: "Using design, video, and storytelling tools to create engaging content.",
                 image: "/assets/program/3.png",
               },
               {
+                id: "digital-advertising",
                 title: "Digital Advertising",
                 desc: "Basics of running ad campaigns and reaching the right audience.",
                 image: "/assets/program/4.png",
               },
               {
+                id: "influencer-campaign-marketing",
                 title: "Influencer & Campaign Marketing",
                 desc: "Planning and executing influencer strategies and brand partnerships.",
                 image: "/assets/program/5.png",
               },
               {
+                id: "entrepreneurial-marketing",
                 title: "Entrepreneurial Marketing",
                 desc: "Turning ideas into offers, building funnels, and pitching with purpose.",
                 image: "/assets/program/6.png",
               },
               {
+                id: "ai-fundamentals",
                 title: "AI Fundamentals",
                 desc: "Core AI concepts and understanding how AI is reshaping the world.",
                 image: "/assets/program/7.png",
               },
               {
+                id: "prompt-engineering",
                 title: "Prompt Engineering",
                 desc: "Using tools like ChatGPT for writing, thinking, and creativity.",
                 image: "/assets/program/8.png",
               },
               {
+                id: "no-code-ai-tools",
                 title: "No-Code AI Tools",
                 desc: "Creating simple apps or automations using visual platforms.",
                 image: "/assets/program/9.png",
               },
               {
+                id: "mini-chatbot-projects",
                 title: "Mini Chatbot Projects",
                 desc: "Designing basic interactive bots that can assist or guide.",
                 image: "/assets/program/10.png",
               },
               {
+                id: "python-basics",
                 title: "Python Basics",
                 desc: "Learning foundational programming skills through simple projects.",
                 image: "/assets/program/11.png",
               },
               {
+                id: "ai-in-real-life",
                 title: "AI in Real Life",
                 desc: "Exploring how AI is applied in fields like health, art, business, and more.",
                 image: "/assets/program/12.png",
               },
               {
+                id: "public-speaking",
                 title: "Public Speaking",
                 desc: "Building confidence and clarity while communicating in front of others.",
                 image: "/assets/program/13.png",
               },
               {
+                id: "pitching-for-entrepreneurs",
                 title: "Pitching for Entrepreneurs",
                 desc: "Creating strong, clear pitches for projects, businesses, or ideas.",
                 image: "/assets/program/14.png",
               },
               {
+                id: "creative-thinking",
                 title: "Creative Thinking",
                 desc: "Practicing innovation, brainstorming, and idea development.",
                 image: "/assets/program/15.png",
               },
               {
+                id: "interview-impression-skills",
                 title: "Interview & Impression Skills",
                 desc: "Preparing to present yourself with clarity, confidence, and professionalism.",
                 image: "/assets/program/16.png",
               },
               {
+                id: "networking-conversation",
                 title: "Networking & Conversation",
                 desc: "Strengthening real-world social interaction and connection skills.",
                 image: "/assets/program/17.png",
               },
               {
+                id: "confidence-presence",
                 title: "Confidence & Presence",
                 desc: "Improving mindset, self-belief, and personal presence.",
                 image: "/assets/program/18.png",
@@ -566,9 +584,12 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="px-6 pb-6">
-                      <button className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-900 hover:border-gray-300 hover:bg-gray-50 transition-colors">
+                      <Link
+                        href={`/courses/${p.id}`}
+                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-900 hover:border-gray-300 hover:bg-gray-50 transition-colors block text-center"
+                      >
                         View Program
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 ))}
