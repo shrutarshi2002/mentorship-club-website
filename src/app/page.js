@@ -48,6 +48,7 @@ const slides = [
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const nextSlide = useCallback(() => {
     if (!isTransitioning) {
@@ -150,7 +151,67 @@ export default function Home() {
               </div>
             </div>
             <div className="md:hidden">
-              <button className="text-gray-700 hover:text-red-600">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-gray-700 hover:text-red-600"
+              >
+                {isMobileMenuOpen ? (
+                  <svg
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 z-40 bg-black bg-opacity-50">
+          <div className="fixed inset-y-0 right-0 w-64 bg-white shadow-xl">
+            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+              <div className="flex items-center space-x-3">
+                <Image
+                  src="/assets/logo.png"
+                  alt="MentorshipClub Logo"
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                />
+                <h1 className="text-xl font-bold">
+                  <span className="text-yellow-500">Mentorship</span>
+                  <span className="text-black">Club</span>
+                </h1>
+              </div>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
                 <svg
                   className="h-6 w-6"
                   fill="none"
@@ -161,17 +222,56 @@ export default function Home() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
+                    d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
               </button>
             </div>
+            <nav className="mt-4">
+              <div className="px-4 space-y-2">
+                <Link
+                  href="/"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/programs"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  Programs
+                </Link>
+                <Link
+                  href="/mentors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  Mentors
+                </Link>
+                <Link
+                  href="/about"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  About
+                </Link>
+                <Link
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  Contact
+                </Link>
+              </div>
+            </nav>
           </div>
         </div>
-      </nav>
+      )}
 
       {/* Hero Slider */}
-      <div className="relative h-screen overflow-hidden">
+      <div className="relative min-h-screen overflow-hidden">
         {/* Slides */}
         {slides.map((slide, index) => (
           <div
@@ -209,17 +309,17 @@ export default function Home() {
             <div className="absolute inset-0 bg-transparent"></div>
 
             {/* Content */}
-            <div className="relative h-full flex items-center">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative h-full flex items-center pt-24 lg:pt-0">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-20 sm:pb-12 lg:py-0">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                   {/* Left Side - Content */}
-                  <div className="text-gray-900">
+                  <div className="text-gray-900 order-2 lg:order-1">
                     <div
                       className={`animate-fade-in-up ${
                         index === currentSlide ? "animate-fade-in-up" : ""
                       }`}
                     >
-                      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
                         {slide.title}
                       </h2>
                     </div>
@@ -230,10 +330,10 @@ export default function Home() {
                       }`}
                     >
                       <p
-                        className={`font-medium mb-8 text-gray-700 ${
+                        className={`font-medium mb-6 sm:mb-8 text-gray-700 ${
                           slide.id === 1
-                            ? "text-lg sm:text-xl lg:text-2xl"
-                            : "text-xl sm:text-2xl lg:text-3xl"
+                            ? "text-base sm:text-lg md:text-xl lg:text-2xl"
+                            : "text-lg sm:text-xl md:text-2xl lg:text-3xl"
                         }`}
                       >
                         {slide.subtitle}
@@ -245,12 +345,12 @@ export default function Home() {
                         index === currentSlide ? "animate-fade-in-up" : ""
                       }`}
                     >
-                      <div className="flex flex-col sm:flex-row gap-4">
-                        <button className="bg-yellow-400 text-black border-2 border-black px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
+                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                        <button className="bg-yellow-400 text-black border-2 border-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold hover:bg-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
                           {slide.cta}
                         </button>
                         {slide.secondaryCta && (
-                          <button className="bg-transparent text-black border-2 border-black px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-400 hover:text-black transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
+                          <button className="bg-transparent text-black border-2 border-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold hover:bg-yellow-400 hover:text-black transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
                             {slide.secondaryCta}
                           </button>
                         )}
@@ -260,13 +360,23 @@ export default function Home() {
 
                   {/* Right Side - Image */}
                   {slide.image && (
-                    <div className="hidden lg:block">
+                    <div className="block order-1 lg:order-2">
                       <div className="relative">
-                        <div className="w-full h-[800px] rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <div
+                          className={`w-full rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300 ${
+                            slide.id === 1
+                              ? "h-[200px] sm:h-[400px] md:h-[500px] lg:h-[800px]"
+                              : "h-[300px] sm:h-[400px] md:h-[500px] lg:h-[800px]"
+                          }`}
+                        >
                           <Image
                             src={slide.image}
                             alt={slide.title}
-                            className="w-full h-full object-cover object-center"
+                            className={`w-full h-full ${
+                              slide.id === 1
+                                ? "object-contain object-center"
+                                : "object-contain object-center"
+                            }`}
                             loading="eager"
                             width={800}
                             height={800}
@@ -321,12 +431,12 @@ export default function Home() {
         </button>
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3 z-10">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 border-2 ${
+              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 border-2 ${
                 index === currentSlide
                   ? "bg-red-600 border-red-600 scale-125 shadow-lg"
                   : "bg-white/80 border-gray-300 hover:bg-red-400 hover:border-red-400"
