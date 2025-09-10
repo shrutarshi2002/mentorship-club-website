@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Navbar from "../components/Navbar";
 
 export default function Programs() {
   const [isVisible, setIsVisible] = useState({});
@@ -257,64 +258,10 @@ export default function Programs() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center space-x-3">
-                <Image
-                  src="/assets/logo.png"
-                  alt="MentorshipClub Logo"
-                  width={40}
-                  height={40}
-                />
-                <h1 className="text-2xl font-bold">
-                  <span className="text-yellow-500">Mentorship</span>
-                  <span className="text-black">Club</span>
-                </h1>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <Link
-                  href="/"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/programs"
-                  className="text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Programs
-                </Link>
-                <Link
-                  href="/mentors"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Mentors
-                </Link>
-                <Link
-                  href="/about"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  About
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Contact
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <section className="pt-8 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Our <span className="text-red-600">Programs</span>

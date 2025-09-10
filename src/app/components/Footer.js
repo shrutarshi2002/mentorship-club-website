@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="col-span-1">
             <div className="flex items-center space-x-3 mb-4">
               <Image
-                src="/assets/logo.png"
+                src="/assets/logo2.png"
                 alt="MentorshipClub Logo"
                 width={40}
                 height={40}

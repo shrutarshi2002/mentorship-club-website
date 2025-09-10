@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Navbar from "../components/Navbar";
 
 export default function Mentors() {
   const [isVisible, setIsVisible] = useState({});
@@ -12,7 +13,7 @@ export default function Mentors() {
     {
       name: "Sarah Johnson",
       role: "Marketing Expert",
-      image: "/assets/logo.png",
+      image: "/assets/mentors/1.png",
       expertise: "Digital Marketing, Brand Strategy",
       experience: "10+ years",
       rating: 4.9,
@@ -21,7 +22,7 @@ export default function Mentors() {
     {
       name: "Michael Chen",
       role: "AI & Technology Lead",
-      image: "/assets/logo.png",
+      image: "/assets/mentors/2.jpg",
       expertise: "Machine Learning, Python, AI Ethics",
       experience: "8+ years",
       rating: 4.8,
@@ -30,7 +31,7 @@ export default function Mentors() {
     {
       name: "Emily Rodriguez",
       role: "Communication Coach",
-      image: "/assets/logo.png",
+      image: "/assets/mentors/3.jpg",
       expertise: "Public Speaking, Leadership",
       experience: "12+ years",
       rating: 4.9,
@@ -39,7 +40,7 @@ export default function Mentors() {
     {
       name: "David Thompson",
       role: "Business Strategy",
-      image: "/assets/logo.png",
+      image: "/assets/mentors/4.jpg",
       expertise: "Entrepreneurship, Business Development",
       experience: "15+ years",
       rating: 4.7,
@@ -48,7 +49,7 @@ export default function Mentors() {
     {
       name: "Lisa Wang",
       role: "Creative Director",
-      image: "/assets/logo.png",
+      image: "/assets/mentors/5.jpg",
       expertise: "Design, Content Creation",
       experience: "9+ years",
       rating: 4.8,
@@ -57,7 +58,7 @@ export default function Mentors() {
     {
       name: "James Rodriguez",
       role: "Career Development",
-      image: "/assets/logo.png",
+      image: "/assets/mentors/6.jpg",
       expertise: "Career Planning, Interview Prep",
       experience: "11+ years",
       rating: 4.9,
@@ -96,64 +97,10 @@ export default function Mentors() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center space-x-3">
-                <Image
-                  src="/assets/logo.png"
-                  alt="MentorshipClub Logo"
-                  width={40}
-                  height={40}
-                />
-                <h1 className="text-2xl font-bold">
-                  <span className="text-yellow-500">Mentorship</span>
-                  <span className="text-black">Club</span>
-                </h1>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <Link
-                  href="/"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/programs"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Programs
-                </Link>
-                <Link
-                  href="/mentors"
-                  className="text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Mentors
-                </Link>
-                <Link
-                  href="/about"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  About
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Contact
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <section className="pt-8 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Meet Our <span className="text-red-600">Mentors</span>

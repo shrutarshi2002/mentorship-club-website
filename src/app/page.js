@@ -20,7 +20,8 @@ const slides = [
     id: 2,
     title: "Empowering Future Leaders",
     subtitle: "Beyond the Classroom",
-    cta: "Become a Mentor / Mentee",
+    cta: "Become a Mentor",
+    secondaryCta: "Become a Mentee",
     gradient: "from-white to-gray-50",
     bgImage: "none",
     image: "/assets/hero/img2.png",
@@ -49,6 +50,17 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [demoFormData, setDemoFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    grade: "",
+    interests: [],
+    preferredTime: "",
+    message: "",
+  });
+  const [openFAQ, setOpenFAQ] = useState(null);
 
   const nextSlide = useCallback(() => {
     if (!isTransitioning) {
@@ -94,6 +106,99 @@ export default function Home() {
   const callback = useCallback(() => {
     // logic
   }, []);
+
+  const handleDemoFormChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === "checkbox") {
+      setDemoFormData((prev) => ({
+        ...prev,
+        interests: checked
+          ? [...prev.interests, value]
+          : prev.interests.filter((item) => item !== value),
+      }));
+    } else {
+      setDemoFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+
+  const handleDemoFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Prepare email data
+      const emailData = {
+        to_email: "bluelight202427@gmail.com",
+        from_name: demoFormData.name,
+        from_email: demoFormData.email,
+        phone: demoFormData.phone,
+        grade: demoFormData.grade,
+        interests: demoFormData.interests.join(", "),
+        preferred_time: demoFormData.preferredTime,
+        message: demoFormData.message,
+        subject: "New Demo Class Request - Mentorship Club",
+        html_content: `
+          <h2>New Demo Class Request</h2>
+          <p><strong>Name:</strong> ${demoFormData.name}</p>
+          <p><strong>Email:</strong> ${demoFormData.email}</p>
+          <p><strong>Phone:</strong> ${demoFormData.phone || "Not provided"}</p>
+          <p><strong>Grade Level:</strong> ${demoFormData.grade}</p>
+          <p><strong>Areas of Interest:</strong> ${demoFormData.interests.join(
+            ", "
+          )}</p>
+          <p><strong>Preferred Time:</strong> ${
+            demoFormData.preferredTime || "Not specified"
+          }</p>
+          <p><strong>Additional Message:</strong></p>
+          <p>${demoFormData.message || "No additional message"}</p>
+        `,
+      };
+
+      // Send email using the API route
+      const response = await fetch("/api/send-demo-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(emailData),
+      });
+
+      if (response.ok) {
+        alert(
+          "Demo request submitted successfully! We'll contact you soon to schedule your free demo class."
+        );
+        setIsDemoModalOpen(false);
+        setDemoFormData({
+          name: "",
+          email: "",
+          phone: "",
+          grade: "",
+          interests: [],
+          preferredTime: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert(
+        "Thank you for your interest! We've received your demo request and will contact you soon. If you don't hear from us within 24 hours, please contact us directly."
+      );
+      setIsDemoModalOpen(false);
+      setDemoFormData({
+        name: "",
+        email: "",
+        phone: "",
+        grade: "",
+        interests: [],
+        preferredTime: "",
+        message: "",
+      });
+    }
+  };
 
   return (
     <div className="bg-white">
@@ -346,14 +451,41 @@ export default function Home() {
                       }`}
                     >
                       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                        <button className="bg-yellow-400 text-black border-2 border-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold hover:bg-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
-                          {slide.cta}
-                        </button>
-                        {slide.secondaryCta && (
-                          <button className="bg-transparent text-black border-2 border-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold hover:bg-yellow-400 hover:text-black transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
-                            {slide.secondaryCta}
+                        {slide.id === 2 ? (
+                          <Link
+                            href="/mentor-application"
+                            className="bg-yellow-400 text-black border-2 border-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold hover:bg-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide text-center"
+                          >
+                            {slide.cta}
+                          </Link>
+                        ) : slide.id === 3 ? (
+                          <Link
+                            href="/programs"
+                            className="bg-yellow-400 text-black border-2 border-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold hover:bg-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide text-center"
+                          >
+                            {slide.cta}
+                          </Link>
+                        ) : (
+                          <button className="bg-yellow-400 text-black border-2 border-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold hover:bg-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide">
+                            {slide.cta}
                           </button>
                         )}
+                        {slide.secondaryCta &&
+                          (slide.secondaryCta === "Become a Mentee" ? (
+                            <Link
+                              href="/mentee-application"
+                              className="bg-transparent text-black border-2 border-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold hover:bg-yellow-400 hover:text-black transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide inline-block"
+                            >
+                              {slide.secondaryCta}
+                            </Link>
+                          ) : (
+                            <button
+                              onClick={() => setIsDemoModalOpen(true)}
+                              className="bg-transparent text-black border-2 border-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold hover:bg-yellow-400 hover:text-black transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl uppercase tracking-wide"
+                            >
+                              {slide.secondaryCta}
+                            </button>
+                          ))}
                       </div>
                     </div>
                   </div>
@@ -834,6 +966,338 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Frequently Asked <span className="text-red-600">Questions</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Everything you need to know about joining our mentorship programs
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-4">
+              {/* FAQ Item 1 */}
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 1 ? null : 1)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q1. Who can join as a mentee?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 1 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 1 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Anyone from middle school, high school, or college, as
+                      well as individuals and business owners, can join our
+                      programs. We welcome all who are eager to gain practical
+                      skills and personal or professional growth beyond what
+                      schools or colleges usually offer.
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* FAQ Item 2 */}
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 2 ? null : 2)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q2. What age groups are allowed?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 2 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 2 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      We start from middle schoolers around 11 years old, but
+                      there is no upper age limit. Young professionals,
+                      entrepreneurs, and individuals looking to reskill or
+                      upskill are also encouraged to participate.
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* FAQ Item 3 */}
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 3 ? null : 3)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q3. Do I need to be a student to join?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 3 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 3 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      No. While many of our mentees are students, this platform
+                      is equally open to entrepreneurs, professionals, and
+                      anyone who wants to learn new skills or explore fresh
+                      career opportunities.
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* FAQ Item 4 */}
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 4 ? null : 4)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q4. Can working professionals or entrepreneurs join?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 4 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 4 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Yes, definitely. We have customized workshops and
+                      mentorship tracks that focus on business growth,
+                      marketing, finance, and leadership to support individuals
+                      already running or starting a business.
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* FAQ Item 5 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q5. What skills or courses are available?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Our skill areas include communication, public speaking,
+                  leadership, entrepreneurship, marketing, coding, financial
+                  literacy, creativity, design, and problem-solving. We keep
+                  expanding the topics to stay relevant to modern needs.
+                </p>
+              </div>
+
+              {/* FAQ Item 6 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q6. How are sessions conducted?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  All sessions are held online to ensure accessibility for
+                  everyone. They may be in workshop format (interactive group
+                  learning), one-to-one sessions (personal guidance), or even
+                  collaborative projects.
+                </p>
+              </div>
+
+              {/* FAQ Item 7 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q7. What is the difference between workshops and one-to-one
+                  mentoring?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Workshops are topic-based sessions attended by many learners
+                  together, while one-to-one mentoring is personalized to your
+                  unique challenges and goals. Both formats complement each
+                  other depending on your needs.
+                </p>
+              </div>
+
+              {/* FAQ Item 8 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q8. Do I need prior experience?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  No prior knowledge is necessary. Our programs are designed to
+                  start from basics and gradually build up to advanced concepts,
+                  so even beginners can benefit fully.
+                </p>
+              </div>
+
+              {/* FAQ Item 9 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q9. Can I choose my own mentor?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  You can suggest preferences, but final matching is done by our
+                  team based on your profile and the mentor's expertise. This
+                  ensures you get the right fit for your goals.
+                </p>
+              </div>
+
+              {/* FAQ Item 10 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q10. How long do programs last?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Short workshops may run 1–3 hours, while structured mentorship
+                  programs may extend for weeks or even months. The duration
+                  depends on your chosen track.
+                </p>
+              </div>
+
+              {/* FAQ Item 11 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q11. Will I get a certificate?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Yes, mentees receive certificates of participation or
+                  completion, which can be added to resumes, portfolios, or
+                  LinkedIn profiles to showcase your new skills.
+                </p>
+              </div>
+
+              {/* FAQ Item 12 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q12. Is there a cost?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Our mentorship initiative is primarily free as we are an NGO.
+                  However, some advanced or specialized programs may require a
+                  minimal fee to cover resources.
+                </p>
+              </div>
+
+              {/* FAQ Item 13 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q13. Can I switch courses or mentors?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Yes. If a course isn't the right fit or you feel better
+                  guidance is needed, you can request a change. We value
+                  flexibility to suit your learning journey.
+                </p>
+              </div>
+
+              {/* FAQ Item 14 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q14. What if I don't know what skill to focus on?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  That's normal. We provide guidance through assessments and
+                  conversations to help identify your strengths, interests, and
+                  most suitable courses.
+                </p>
+              </div>
+
+              {/* FAQ Item 15 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q15. Can this help me academically?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Yes. Although designed for practical learning, mentees often
+                  notice better performance in studies thanks to improved
+                  confidence, focus, and problem-solving.
+                </p>
+              </div>
+
+              {/* FAQ Item 16 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q16. Are there business-focused programs?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Yes, we support entrepreneurs with mentoring on branding,
+                  digital presence, marketing, scaling, financial management,
+                  and leadership.
+                </p>
+              </div>
+
+              {/* FAQ Item 17 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q17. Can I get internships?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Yes. Many mentors from professional backgrounds also offer
+                  internships. These opportunities are managed separately to
+                  ensure mentees are prepared before joining.
+                </p>
+              </div>
+
+              {/* FAQ Item 18 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q18. How will this help me in real life?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Mentorship prepares you for real-world challenges, from
+                  interviews to running a business. It builds life skills like
+                  decision-making, teamwork, and leadership that schools rarely
+                  focus on.
+                </p>
+              </div>
+
+              {/* FAQ Item 19 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q19. Do mentees get career guidance?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Yes. Career clarity sessions, resume reviews, interview
+                  practice, and industry insights are part of what mentors
+                  provide to prepare you for the future.
+                </p>
+              </div>
+
+              {/* FAQ Item 20 */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Q20. How do I register?
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Simply sign up on our website. After reviewing your details,
+                  our NGO team connects you with suitable workshops, mentors, or
+                  career pathways.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-16 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -842,7 +1306,7 @@ export default function Home() {
             <div className="col-span-1">
               <div className="flex items-center space-x-3 mb-4">
                 <Image
-                  src="/assets/logo.png"
+                  src="/assets/logo2.png"
                   alt="MentorshipClub Logo"
                   width={40}
                   height={40}
@@ -974,6 +1438,203 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Demo Booking Modal */}
+      {isDemoModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 backdrop-blur-sm"
+            onClick={() => setIsDemoModalOpen(false)}
+          />
+
+          {/* Modal Content */}
+          <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Book a Free Demo Class
+                </h2>
+                <p className="text-gray-600 mt-1">
+                  Experience our interactive workshops firsthand
+                </p>
+              </div>
+              <button
+                onClick={() => setIsDemoModalOpen(false)}
+                className="p-2 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Form */}
+            <form onSubmit={handleDemoFormSubmit} className="p-6 space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={demoFormData.name}
+                    onChange={handleDemoFormChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={demoFormData.email}
+                    onChange={handleDemoFormChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors"
+                    placeholder="Enter your email"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={demoFormData.phone}
+                    onChange={handleDemoFormChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Grade Level *
+                  </label>
+                  <select
+                    name="grade"
+                    required
+                    value={demoFormData.grade}
+                    onChange={handleDemoFormChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors"
+                  >
+                    <option value="">Select your grade</option>
+                    <option value="6th">6th Grade</option>
+                    <option value="7th">7th Grade</option>
+                    <option value="8th">8th Grade</option>
+                    <option value="9th">9th Grade</option>
+                    <option value="10th">10th Grade</option>
+                    <option value="11th">11th Grade</option>
+                    <option value="12th">12th Grade</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  Areas of Interest (Select all that apply)
+                </label>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {[
+                    "Coding/Programming",
+                    "Graphic Design",
+                    "Public Speaking",
+                    "AI & Machine Learning",
+                    "Digital Marketing",
+                    "Leadership Skills",
+                    "Financial Literacy",
+                    "Entrepreneurship",
+                    "Data Analysis",
+                    "Web Development",
+                    "Mobile App Development",
+                    "Game Development",
+                  ].map((interest) => (
+                    <label key={interest} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        name="interests"
+                        value={interest}
+                        checked={demoFormData.interests.includes(interest)}
+                        onChange={handleDemoFormChange}
+                        className="mr-2 rounded border-gray-300 text-yellow-600 focus:ring-yellow-500"
+                      />
+                      <span className="text-sm text-gray-700">{interest}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Preferred Demo Time
+                </label>
+                <select
+                  name="preferredTime"
+                  value={demoFormData.preferredTime}
+                  onChange={handleDemoFormChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors"
+                >
+                  <option value="">Select preferred time</option>
+                  <option value="morning">Morning (9 AM - 12 PM)</option>
+                  <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
+                  <option value="evening">Evening (5 PM - 8 PM)</option>
+                  <option value="weekend">Weekend</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Additional Message
+                </label>
+                <textarea
+                  name="message"
+                  value={demoFormData.message}
+                  onChange={handleDemoFormChange}
+                  rows={4}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors"
+                  placeholder="Tell us what you'd like to learn or any specific questions you have..."
+                />
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <button
+                  type="button"
+                  onClick={() => setIsDemoModalOpen(false)}
+                  className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black rounded-lg font-semibold hover:from-yellow-500 hover:to-yellow-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+                >
+                  Book Free Demo
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

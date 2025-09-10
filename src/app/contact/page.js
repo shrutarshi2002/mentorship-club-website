@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Navbar from "../components/Navbar";
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState({});
@@ -217,64 +218,10 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center space-x-3">
-                <Image
-                  src="/assets/logo.png"
-                  alt="MentorshipClub Logo"
-                  width={40}
-                  height={40}
-                />
-                <h1 className="text-2xl font-bold">
-                  <span className="text-yellow-500">Mentorship</span>
-                  <span className="text-black">Club</span>
-                </h1>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <Link
-                  href="/"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/programs"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Programs
-                </Link>
-                <Link
-                  href="/mentors"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Mentors
-                </Link>
-                <Link
-                  href="/about"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  About
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Contact
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <section className="pt-8 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Get in <span className="text-red-600">Touch</span>
@@ -299,7 +246,7 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {contactInfo.map((info, index) => (
               <div
                 key={index}
@@ -320,14 +267,20 @@ export default function Contact() {
                   }
                 >
                   <div
-                    className={`bg-gradient-to-br ${info.color} p-8 rounded-3xl shadow-xl text-white h-full group-hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-2`}
+                    className={`bg-gradient-to-br ${info.color} p-6 md:p-8 rounded-3xl shadow-xl text-white h-full group-hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-2`}
                   >
-                    <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 md:mb-6">
                       {info.icon}
                     </div>
-                    <h3 className="text-2xl font-bold mb-4">{info.title}</h3>
-                    <p className="text-2xl font-semibold mb-2">{info.value}</p>
-                    <p className="text-white/80">{info.subtitle}</p>
+                    <h3 className="text-xl md:text-2xl font-bold mb-4">
+                      {info.title}
+                    </h3>
+                    <p className="text-lg md:text-2xl font-semibold mb-2">
+                      {info.value}
+                    </p>
+                    <p className="text-sm md:text-base text-white/80">
+                      {info.subtitle}
+                    </p>
                   </div>
                 </Link>
               </div>

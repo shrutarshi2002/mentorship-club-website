@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Navbar from "../components/Navbar";
 
 export default function About() {
   const [isVisible, setIsVisible] = useState({});
@@ -12,42 +13,42 @@ export default function About() {
     {
       name: "Sarah Johnson",
       role: "Founder & CEO",
-      image: "/assets/logo.png",
+      image: "/assets/logo2.png",
       bio: "Former tech executive with 15+ years of experience in leadership development and mentorship programs.",
       color: "from-red-500 to-pink-600",
     },
     {
       name: "Michael Chen",
       role: "Head of Programs",
-      image: "/assets/logo.png",
+      image: "/assets/logo2.png",
       bio: "Education specialist focused on creating impactful learning experiences and career development pathways.",
       color: "from-blue-500 to-indigo-600",
     },
     {
       name: "Emily Rodriguez",
       role: "Community Director",
-      image: "/assets/logo.png",
+      image: "/assets/logo2.png",
       bio: "Passionate about building inclusive communities and fostering meaningful connections between mentors and mentees.",
       color: "from-green-500 to-teal-600",
     },
     {
       name: "David Thompson",
       role: "Technology Lead",
-      image: "/assets/logo.png",
+      image: "/assets/logo2.png",
       bio: "Innovator in ed-tech solutions, ensuring our platform provides seamless mentorship experiences.",
       color: "from-purple-500 to-pink-600",
     },
     {
       name: "Lisa Wang",
       role: "Marketing Director",
-      image: "/assets/logo.png",
+      image: "/assets/logo2.png",
       bio: "Strategic marketing expert who helps us reach and connect with communities worldwide.",
       color: "from-yellow-500 to-orange-600",
     },
     {
       name: "James Rodriguez",
       role: "Operations Manager",
-      image: "/assets/logo.png",
+      image: "/assets/logo2.png",
       bio: "Ensures smooth operations and exceptional user experiences across all our programs.",
       color: "from-cyan-500 to-blue-600",
     },
@@ -238,64 +239,10 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center space-x-3">
-                <Image
-                  src="/assets/logo.png"
-                  alt="MentorshipClub Logo"
-                  width={40}
-                  height={40}
-                />
-                <h1 className="text-2xl font-bold">
-                  <span className="text-yellow-500">Mentorship</span>
-                  <span className="text-black">Club</span>
-                </h1>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <Link
-                  href="/"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/programs"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Programs
-                </Link>
-                <Link
-                  href="/mentors"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Mentors
-                </Link>
-                <Link
-                  href="/about"
-                  className="text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  About
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Contact
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <section className="pt-8 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             About <span className="text-red-600">Mentorship Club</span>
