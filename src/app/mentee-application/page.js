@@ -205,7 +205,7 @@ export default function MenteeApplication() {
     if (validateSection(6)) {
       console.log("Form submitted:", formData);
       alert(
-        "Application submitted successfully! We'll review your application and get back to you soon."
+        "Application submitted successfully! We&apos;ll review your application and get back to you soon."
       );
     }
   };
@@ -460,7 +460,7 @@ export default function MenteeApplication() {
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Specific skills/topics you'd like to learn{" "}
+          Specific skills/topics you&apos;d like to learn{" "}
           <span className="text-red-500">*</span>
         </label>
         <input
@@ -717,8 +717,8 @@ export default function MenteeApplication() {
               className="mr-2"
             />
             <span className="text-sm font-medium text-gray-700">
-              I will respect my mentor's time and follow the Code of Conduct{" "}
-              <span className="text-red-500">*</span>
+              I will respect my mentor&apos;s time and follow the Code of
+              Conduct <span className="text-red-500">*</span>
             </span>
           </label>
           {errors.respectMentor && (

@@ -167,7 +167,7 @@ export default function Home() {
 
       if (response.ok) {
         alert(
-          "Demo request submitted successfully! We'll contact you soon to schedule your free demo class."
+          "Demo request submitted successfully! We&apos;ll contact you soon to schedule your free demo class."
         );
         setIsDemoModalOpen(false);
         setDemoFormData({
@@ -185,7 +185,7 @@ export default function Home() {
     } catch (error) {
       console.error("Error sending email:", error);
       alert(
-        "Thank you for your interest! We've received your demo request and will contact you soon. If you don't hear from us within 24 hours, please contact us directly."
+        "Thank you for your interest! We&apos;ve received your demo request and will contact you soon. If you don&apos;t hear from us within 24 hours, please contact us directly."
       );
       setIsDemoModalOpen(false);
       setDemoFormData({
@@ -1156,8 +1156,8 @@ export default function Home() {
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
                   You can suggest preferences, but final matching is done by our
-                  team based on your profile and the mentor's expertise. This
-                  ensures you get the right fit for your goals.
+                  team based on your profile and the mentor&apos;s expertise.
+                  This ensures you get the right fit for your goals.
                 </p>
               </div>
 
@@ -1203,7 +1203,7 @@ export default function Home() {
                   Q13. Can I switch courses or mentors?
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Yes. If a course isn't the right fit or you feel better
+                  Yes. If a course isn&apos;t the right fit or you feel better
                   guidance is needed, you can request a change. We value
                   flexibility to suit your learning journey.
                 </p>
@@ -1212,12 +1212,12 @@ export default function Home() {
               {/* FAQ Item 14 */}
               <div className="bg-white rounded-lg shadow-md p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q14. What if I don't know what skill to focus on?
+                  Q14. What if I don&apos;t know what skill to focus on?
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  That's normal. We provide guidance through assessments and
-                  conversations to help identify your strengths, interests, and
-                  most suitable courses.
+                  That&apos;s normal. We provide guidance through assessments
+                  and conversations to help identify your strengths, interests,
+                  and most suitable courses.
                 </p>
               </div>
 

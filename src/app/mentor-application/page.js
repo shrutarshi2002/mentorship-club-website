@@ -124,9 +124,9 @@ export default function MentorApplication() {
 
   const educationLevels = [
     "High School",
-    "Associate's Degree",
-    "Bachelor's Degree",
-    "Master's Degree",
+    "Associate&apos;s Degree",
+    "Bachelor&apos;s Degree",
+    "Master&apos;s Degree",
     "Doctorate",
     "Professional Certification",
     "Other",
@@ -273,7 +273,7 @@ export default function MentorApplication() {
       case 4:
         if (!formData.mentorMinors)
           newErrors.mentorMinors =
-            "Please specify if you're willing to mentor minors";
+            "Please specify if you&apos;re willing to mentor minors";
         if (
           formData.mentorMinors === "Yes" &&
           !formData.backgroundCheckConsent
@@ -317,7 +317,7 @@ export default function MentorApplication() {
       // Handle form submission
       console.log("Form submitted:", formData);
       alert(
-        "Application submitted successfully! We'll review your application and get back to you soon."
+        "Application submitted successfully! We&apos;ll review your application and get back to you soon."
       );
     }
   };
@@ -1316,7 +1316,7 @@ export default function MentorApplication() {
               <p className="text-lg leading-relaxed">
                 At Mentorship Club, mentors are the backbone of our mission. You
                 bring knowledge, guidance, and encouragement to learners and
-                entrepreneurs who are ready to grow. Whether you're an
+                entrepreneurs who are ready to grow. Whether you&apos;re an
                 experienced professional, a business owner, or someone with
                 unique life skills, your mentorship can make a lasting impact.
               </p>
@@ -1366,9 +1366,9 @@ export default function MentorApplication() {
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <span>
-                      <strong>Anyone Willing to Give Time</strong> – If you're
-                      passionate about empowering youth, students, or small
-                      business owners, you're welcome.
+                      <strong>Anyone Willing to Give Time</strong> – If
+                      you&apos;re passionate about empowering youth, students,
+                      or small business owners, you&apos;re welcome.
                     </span>
                   </li>
                 </ul>
@@ -1483,7 +1483,7 @@ export default function MentorApplication() {
                     <span className="text-purple-500 mr-2">•</span>
                     <span>
                       <strong>Impact Lives Directly</strong> – Every session you
-                      take can open a door for someone's future.
+                      take can open a door for someone&apos;s future.
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -1530,8 +1530,8 @@ export default function MentorApplication() {
                       2
                     </span>
                     <span>
-                      <strong>Meet Our Team</strong> – We'll connect with you to
-                      understand your skills and interests.
+                      <strong>Meet Our Team</strong> – We&apos;ll connect with
+                      you to understand your skills and interests.
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -1694,7 +1694,7 @@ export default function MentorApplication() {
                   <div className="px-6 pb-4">
                     <p className="text-gray-600 leading-relaxed">
                       No teaching background is necessary. What matters is your
-                      real-world experience, and we'll support you with
+                      real-world experience, and we&apos;ll support you with
                       orientation and teaching guidelines if needed.
                     </p>
                   </div>
@@ -1750,9 +1750,9 @@ export default function MentorApplication() {
                 {openFAQ === 4 && (
                   <div className="px-6 pb-4">
                     <p className="text-gray-600 leading-relaxed">
-                      It's flexible. Some mentors commit just a couple of hours
-                      a month, while others run structured weekly workshops. You
-                      choose what fits your schedule.
+                      It&apos;s flexible. Some mentors commit just a couple of
+                      hours a month, while others run structured weekly
+                      workshops. You choose what fits your schedule.
                     </p>
                   </div>
                 )}
@@ -1778,9 +1778,9 @@ export default function MentorApplication() {
                 {openFAQ === 5 && (
                   <div className="px-6 pb-4">
                     <p className="text-gray-600 leading-relaxed">
-                      Yes. You can specify whether you'd prefer to mentor school
-                      students, college learners, working professionals, or
-                      entrepreneurs.
+                      Yes. You can specify whether you&apos;d prefer to mentor
+                      school students, college learners, working professionals,
+                      or entrepreneurs.
                     </p>
                   </div>
                 )}
@@ -2001,7 +2001,7 @@ export default function MentorApplication() {
                 {openFAQ === 13 && (
                   <div className="px-6 pb-4">
                     <p className="text-gray-600 leading-relaxed">
-                      Yes. If you're a business owner or professional with
+                      Yes. If you&apos;re a business owner or professional with
                       capacity, you can offer internships. These will be managed
                       separately and matched carefully with mentees.
                     </p>
@@ -2113,8 +2113,8 @@ export default function MentorApplication() {
                   <div className="px-6 pb-4">
                     <p className="text-gray-600 leading-relaxed">
                       Mentorship improves your leadership, communication, and
-                      networking skills. It's also deeply fulfilling to give
-                      back and shape the future generation.
+                      networking skills. It&apos;s also deeply fulfilling to
+                      give back and shape the future generation.
                     </p>
                   </div>
                 )}
@@ -2141,7 +2141,7 @@ export default function MentorApplication() {
                   <div className="px-6 pb-4">
                     <p className="text-gray-600 leading-relaxed">
                       No, you can choose to mentor occasionally or regularly.
-                      There's complete flexibility in how you contribute.
+                      There&apos;s complete flexibility in how you contribute.
                     </p>
                   </div>
                 )}
