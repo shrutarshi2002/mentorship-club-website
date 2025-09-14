@@ -314,10 +314,79 @@ export default function MentorApplication() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateSection(5)) {
-      // Handle form submission
-      console.log("Form submitted:", formData);
+      // Prepare email data
+      const emailData = {
+        to: "mentorshipclubfl@gmail.com",
+        subject: "New Mentor Application - " + formData.fullName,
+        body: `
+New Mentor Application Received
+
+PERSONAL & CONTACT INFORMATION:
+Full Name: ${formData.fullName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+City: ${formData.city}
+Country: ${formData.country}
+Time Zone: ${formData.timeZone}
+LinkedIn Profile: ${formData.linkedinProfile}
+Website: ${formData.website}
+Languages: ${formData.languages.join(", ")}
+How did you hear about us: ${formData.hearAboutUs} ${
+          formData.hearAboutUsOther ? `- ${formData.hearAboutUsOther}` : ""
+        }
+
+EXPERTISE & FIT:
+Years of Experience: ${formData.yearsExperience}
+Highest Education: ${formData.highestEducation}
+Current Role: ${formData.currentRole}
+Employer: ${formData.employer}
+Short Bio: ${formData.shortBio}
+Primary Domains: ${formData.primaryDomains.join(", ")}
+Industry Expertise: ${formData.industryExpertise.join(", ")}
+Specific Skills: ${formData.specificSkills}
+Age Groups: ${formData.ageGroups.join(", ")}
+Mentoring Format: ${formData.mentoringFormat.join(", ")}
+Session Medium: ${formData.sessionMedium.join(", ")}
+In-Person City: ${formData.inPersonCity}
+Past Experience: ${formData.pastExperience}
+Past Experience Description: ${formData.pastExperienceDescription}
+
+AVAILABILITY & LOGISTICS:
+Weekly Availability: ${formData.weeklyAvailability}
+Time Commitment: ${formData.timeCommitment}
+Start Date: ${formData.startDate}
+Session Length: ${formData.sessionLength}
+Group Capacity: ${formData.groupCapacity}
+Curriculum Materials: ${formData.curriculumMaterials}
+Tech Requirements: ${formData.techRequirements.join(", ")}
+
+COMPLIANCE & POLICIES:
+Mentor Minors: ${formData.mentorMinors}
+Background Check Consent: ${formData.backgroundCheckConsent ? "Yes" : "No"}
+Country Eligibility: ${formData.countryEligibility}
+Code of Conduct: ${formData.codeOfConduct ? "Agreed" : "Not Agreed"}
+Data Privacy: ${formData.dataPrivacy ? "Agreed" : "Not Agreed"}
+Non-Solicitation: ${formData.nonSolicitation ? "Agreed" : "Not Agreed"}
+
+CONFIRMATION:
+Why do you want to mentor: ${formData.whyMentor}
+Conflict of Interest: ${formData.conflictOfInterest}
+Signature: ${formData.signature}
+Date: ${formData.date}
+        `.trim(),
+      };
+
+      // Create mailto link
+      const mailtoLink = `mailto:${emailData.to}?subject=${encodeURIComponent(
+        emailData.subject
+      )}&body=${encodeURIComponent(emailData.body)}`;
+
+      // Open email client
+      window.location.href = mailtoLink;
+
+      // Show success message
       alert(
-        "Application submitted successfully! We&apos;ll review your application and get back to you soon."
+        "Your mentor application has been prepared for email. Your default email client should open with a pre-filled email to mentorshipclubfl@gmail.com. Please send the email to complete your application submission."
       );
     }
   };
@@ -2313,9 +2382,9 @@ export default function MentorApplication() {
             <div className="col-span-1">
               <h4 className="text-white font-bold text-lg mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>info@mentorshipclub.com</li>
+                <li>mentorshipclubfl@gmail.com</li>
                 <li>+1 (555) 123-4567</li>
-                <li>123 Mentorship Ave, City, State</li>
+                <li>10044 NW 2nd St Coral Springs, FLORIDA 33071</li>
               </ul>
             </div>
           </div>

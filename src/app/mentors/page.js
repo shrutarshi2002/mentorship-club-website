@@ -6,6 +6,26 @@ import Image from "next/image";
 import Navbar from "../components/Navbar";
 
 export default function Mentors() {
+  // PAGE HIDDEN - This page has been temporarily hidden
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Navbar />
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Page Hidden</h1>
+          <p className="text-gray-600 mb-8">This page is currently not available.</p>
+          <Link 
+            href="/" 
+            className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
+          >
+            Return to Home
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+
+  /* ORIGINAL MENTORS PAGE CONTENT - HIDDEN
   const [isVisible, setIsVisible] = useState({});
   const sectionRefs = useRef({});
 
@@ -164,7 +184,36 @@ export default function Mentors() {
                         {mentor.students} students
                       </span>
                     </div>
-                    <button className="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                    <button 
+                      onClick={() => {
+                        const emailData = {
+                          to: "mentorshipclubfl@gmail.com",
+                          subject: `Book Session with ${mentor.name} - ${mentor.role}`,
+                          body: `
+Session Booking Request
+
+I would like to book a session with:
+Name: ${mentor.name}
+Role: ${mentor.role}
+Expertise: ${mentor.expertise}
+Experience: ${mentor.experience}
+Rating: ${mentor.rating}/5
+Students: ${mentor.students}
+
+Please contact me to schedule a session.
+
+---
+This request was sent from the Mentorship Club mentors page.
+                          `.trim()
+                        };
+                        
+                        const mailtoLink = `mailto:${emailData.to}?subject=${encodeURIComponent(emailData.subject)}&body=${encodeURIComponent(emailData.body)}`;
+                        window.location.href = mailtoLink;
+                        
+                        alert("Your session booking request has been prepared for email. Your default email client should open with a pre-filled email to mentorshipclubfl@gmail.com. Please send the email to complete your booking request.");
+                      }}
+                      className="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
+                    >
                       Book Session
                     </button>
                   </div>
@@ -273,9 +322,9 @@ export default function Mentors() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>info@mentorshipclub.com</li>
+                <li>mentorshipclubfl@gmail.com</li>
                 <li>+1 (555) 123-4567</li>
-                <li>123 Mentorship Ave, City, State</li>
+                <li>10044 NW 2nd St Coral Springs, FLORIDA 33071</li>
               </ul>
             </div>
           </div>
@@ -287,4 +336,5 @@ export default function Mentors() {
       </footer>
     </div>
   );
+  */
 }

@@ -560,7 +560,41 @@ export default function Programs() {
                         >
                           View Program
                         </Link>
-                        <button className="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                        <button
+                          onClick={() => {
+                            const emailData = {
+                              to: "mentorshipclubfl@gmail.com",
+                              subject: `Enrollment Request - ${program.title}`,
+                              body: `
+Program Enrollment Request
+
+I would like to enroll in:
+Program: ${program.title}
+Description: ${program.description}
+Duration: ${program.duration}
+Level: ${program.level}
+Price: ${program.price}
+
+Please contact me to complete my enrollment.
+
+---
+This request was sent from the Mentorship Club programs page.
+                              `.trim(),
+                            };
+
+                            const mailtoLink = `mailto:${
+                              emailData.to
+                            }?subject=${encodeURIComponent(
+                              emailData.subject
+                            )}&body=${encodeURIComponent(emailData.body)}`;
+                            window.location.href = mailtoLink;
+
+                            alert(
+                              "Your enrollment request has been prepared for email. Your default email client should open with a pre-filled email to mentorshipclubfl@gmail.com. Please send the email to complete your enrollment request."
+                            );
+                          }}
+                          className="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
+                        >
                           Enroll Now
                         </button>
                       </div>
@@ -670,9 +704,9 @@ export default function Programs() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>info@mentorshipclub.com</li>
+                <li>mentorshipclubfl@gmail.com</li>
                 <li>+1 (555) 123-4567</li>
-                <li>123 Mentorship Ave, City, State</li>
+                <li>10044 NW 2nd St Coral Springs, FLORIDA 33071</li>
               </ul>
             </div>
           </div>

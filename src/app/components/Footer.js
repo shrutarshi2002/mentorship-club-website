@@ -111,10 +111,10 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="mailto:info@mentorshipclub.com"
+                  href="mailto:mentorshipclubfl@gmail.com"
                   className="text-white hover:text-yellow-400 transition-colors text-sm"
                 >
-                  info@mentorshipclub.com
+                  mentorshipclubfl@gmail.com
                 </a>
               </li>
               <li>
@@ -126,7 +126,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="text-white text-sm">
-                123 Mentorship Ave, City, State
+                10044 NW 2nd St Coral Springs, FLORIDA 33071
               </li>
             </ul>
           </div>

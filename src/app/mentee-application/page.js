@@ -203,9 +203,66 @@ export default function MenteeApplication() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateSection(6)) {
-      console.log("Form submitted:", formData);
+      // Prepare email data
+      const emailData = {
+        to: "mentorshipclubfl@gmail.com",
+        subject: "New Mentee Application - " + formData.fullName,
+        body: `
+New Mentee Application Received
+
+PERSONAL & CONTACT INFORMATION:
+Full Name: ${formData.fullName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Age: ${formData.age}
+Gender: ${formData.gender}
+City: ${formData.city}
+Country: ${formData.country}
+Education Level: ${formData.educationLevel}
+LinkedIn Profile: ${formData.linkedinProfile}
+
+GOALS & INTERESTS:
+Main Goals: ${formData.mainGoals}
+Mentorship Areas: ${formData.mentorshipAreas.join(", ")}
+Other Mentorship Area: ${formData.otherMentorshipArea}
+Specific Skills: ${formData.specificSkills}
+Preferred Mentor Age: ${formData.preferredMentorAge}
+
+AVAILABILITY & FORMAT:
+Mentoring Format: ${formData.mentoringFormat.join(", ")}
+Session Length: ${formData.sessionLength}
+Weekly Availability: ${formData.weeklyAvailability}
+Start Date: ${formData.startDate}
+
+EXPECTATIONS & SUPPORT:
+Mentored Before: ${formData.mentoredBefore}
+Past Experience: ${formData.pastExperience}
+How Mentorship Will Help: ${formData.howMentorshipWillHelp}
+Special Support: ${formData.specialSupport}
+
+COMPLIANCE & POLICIES:
+Attend Sessions: ${formData.attendSessions ? "Agreed" : "Not Agreed"}
+Respect Mentor: ${formData.respectMentor ? "Agreed" : "Not Agreed"}
+Data Privacy: ${formData.dataPrivacy ? "Agreed" : "Not Agreed"}
+
+CONFIRMATION:
+Why Select Me: ${formData.whySelectMe}
+Signature: ${formData.signature}
+Date: ${formData.date}
+        `.trim(),
+      };
+
+      // Create mailto link
+      const mailtoLink = `mailto:${emailData.to}?subject=${encodeURIComponent(
+        emailData.subject
+      )}&body=${encodeURIComponent(emailData.body)}`;
+
+      // Open email client
+      window.location.href = mailtoLink;
+
+      // Show success message
       alert(
-        "Application submitted successfully! We&apos;ll review your application and get back to you soon."
+        "Your mentee application has been prepared for email. Your default email client should open with a pre-filled email to mentorshipclubfl@gmail.com. Please send the email to complete your application submission."
       );
     }
   };
@@ -1007,9 +1064,9 @@ export default function MenteeApplication() {
             <div className="col-span-1">
               <h4 className="text-white font-bold text-lg mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>info@mentorshipclub.com</li>
+                <li>mentorshipclubfl@gmail.com</li>
                 <li>+1 (555) 123-4567</li>
-                <li>123 Mentorship Ave, City, State</li>
+                <li>10044 NW 2nd St Coral Springs, FLORIDA 33071</li>
               </ul>
             </div>
           </div>

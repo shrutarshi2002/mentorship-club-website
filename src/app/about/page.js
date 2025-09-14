@@ -492,8 +492,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section id="story" ref={setRef("story")} className="py-20 bg-white">
+      {/* Our Story Section - HIDDEN */}
+      {/* <section id="story" ref={setRef("story")} className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-8">Our Story</h2>
@@ -528,7 +528,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Our Approach Section */}
       <section
@@ -673,8 +673,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* Our Team Section */}
-      <section
+      {/* Our Team Section - HIDDEN */}
+      {/* <section
         id="team"
         ref={setRef("team")}
         className="py-20 bg-gradient-to-br from-gray-50 to-indigo-50"
@@ -747,10 +747,10 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Impact Overview Section */}
-      <section id="impact" ref={setRef("impact")} className="py-20 bg-white">
+      {/* Impact Overview Section - HIDDEN */}
+      {/* <section id="impact" ref={setRef("impact")} className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
@@ -885,7 +885,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
@@ -957,9 +957,9 @@ export default function About() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>info@mentorshipclub.com</li>
+                <li>mentorshipclubfl@gmail.com</li>
                 <li>+1 (555) 123-4567</li>
-                <li>123 Mentorship Ave, City, State</li>
+                <li>10044 NW 2nd St Coral Springs, FLORIDA 33071</li>
               </ul>
             </div>
           </div>

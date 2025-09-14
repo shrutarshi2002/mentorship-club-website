@@ -10,7 +10,36 @@ export default function CourseEnrollment({ course }) {
       {/* CTA Buttons */}
       <div className="flex flex-col sm:flex-row gap-4">
         <button
-          onClick={() => setIsEnrolled(true)}
+          onClick={() => {
+            const emailData = {
+              to: "mentorshipclubfl@gmail.com",
+              subject: `Course Enrollment Request - ${course.title}`,
+              body: `
+Course Enrollment Request
+
+I would like to enroll in:
+Course: ${course.title}
+Price: ${course.price}
+Description: ${course.description || "N/A"}
+
+Please contact me to complete my enrollment and payment.
+
+---
+This request was sent from the Mentorship Club course enrollment page.
+              `.trim(),
+            };
+
+            const mailtoLink = `mailto:${
+              emailData.to
+            }?subject=${encodeURIComponent(
+              emailData.subject
+            )}&body=${encodeURIComponent(emailData.body)}`;
+            window.location.href = mailtoLink;
+
+            alert(
+              "Your course enrollment request has been prepared for email. Your default email client should open with a pre-filled email to mentorshipclubfl@gmail.com. Please send the email to complete your enrollment request."
+            );
+          }}
           className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           Enroll Now - {course.price}

@@ -50,12 +50,13 @@ export default function Navbar() {
               >
                 Programs
               </Link>
-              <Link
+              {/* Mentors link hidden */}
+              {/* <Link
                 href="/mentors"
                 className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 Mentors
-              </Link>
+              </Link> */}
               <Link
                 href="/contact"
                 className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
@@ -222,7 +223,8 @@ export default function Navbar() {
               </svg>
               Programs
             </Link>
-            <Link
+            {/* Mentors mobile link hidden */}
+            {/* <Link
               href="/mentors"
               className="flex items-center px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-red-50 rounded-xl text-base font-medium transition-all duration-200 group"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -241,7 +243,7 @@ export default function Navbar() {
                 />
               </svg>
               Mentors
-            </Link>
+            </Link> */}
             <Link
               href="/contact"
               className="flex items-center px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-red-50 rounded-xl text-base font-medium transition-all duration-200 group"

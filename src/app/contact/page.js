@@ -83,7 +83,7 @@ export default function Contact() {
   const contactInfo = [
     {
       title: "Email Us",
-      value: "info@mentorshipclub.com",
+      value: "mentorshipclubfl@gmail.com",
       subtitle: "We&apos;ll respond within 24 hours",
       icon: (
         <svg
@@ -101,7 +101,7 @@ export default function Contact() {
         </svg>
       ),
       color: "from-blue-500 to-indigo-600",
-      action: "mailto:info@mentorshipclub.com",
+      action: "mailto:mentorshipclubfl@gmail.com",
     },
     {
       title: "Call Us",
@@ -127,8 +127,8 @@ export default function Contact() {
     },
     {
       title: "Visit Us",
-      value: "123 Mentorship Ave",
-      subtitle: "City, State 12345",
+      value: "10044 NW 2nd St",
+      subtitle: "Coral Springs, FLORIDA 33071",
       icon: (
         <svg
           className="w-8 h-8"
@@ -197,12 +197,43 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // Prepare email data
+    const emailData = {
+      to: "mentorshipclubfl@gmail.com",
+      subject: "Contact Form - " + formData.subject,
+      body: `
+New Contact Form Submission
 
-    // Simulate success
+Name: ${formData.name}
+Email: ${formData.email}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}
+
+---
+This message was sent from the Mentorship Club contact form.
+      `.trim(),
+    };
+
+    // Create mailto link
+    const mailtoLink = `mailto:${emailData.to}?subject=${encodeURIComponent(
+      emailData.subject
+    )}&body=${encodeURIComponent(emailData.body)}`;
+
+    // Open email client
+    window.location.href = mailtoLink;
+
+    // Show success message
     setSubmitStatus("success");
     setIsSubmitting(false);
+
+    // Show additional info about email
+    setTimeout(() => {
+      alert(
+        "Your message has been prepared for email. Your default email client should open with a pre-filled email to mentorshipclubfl@gmail.com. Please send the email to complete your message submission."
+      );
+    }, 1000);
 
     // Reset form
     setFormData({
@@ -590,9 +621,9 @@ export default function Contact() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>info@mentorshipclub.com</li>
+                <li>mentorshipclubfl@gmail.com</li>
                 <li>+1 (555) 123-4567</li>
-                <li>123 Mentorship Ave, City, State</li>
+                <li>10044 NW 2nd St Coral Springs, FLORIDA 33071</li>
               </ul>
             </div>
           </div>

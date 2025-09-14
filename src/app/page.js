@@ -127,77 +127,52 @@ export default function Home() {
   const handleDemoFormSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      // Prepare email data
-      const emailData = {
-        to_email: "bluelight202427@gmail.com",
-        from_name: demoFormData.name,
-        from_email: demoFormData.email,
-        phone: demoFormData.phone,
-        grade: demoFormData.grade,
-        interests: demoFormData.interests.join(", "),
-        preferred_time: demoFormData.preferredTime,
-        message: demoFormData.message,
-        subject: "New Demo Class Request - Mentorship Club",
-        html_content: `
-          <h2>New Demo Class Request</h2>
-          <p><strong>Name:</strong> ${demoFormData.name}</p>
-          <p><strong>Email:</strong> ${demoFormData.email}</p>
-          <p><strong>Phone:</strong> ${demoFormData.phone || "Not provided"}</p>
-          <p><strong>Grade Level:</strong> ${demoFormData.grade}</p>
-          <p><strong>Areas of Interest:</strong> ${demoFormData.interests.join(
-            ", "
-          )}</p>
-          <p><strong>Preferred Time:</strong> ${
-            demoFormData.preferredTime || "Not specified"
-          }</p>
-          <p><strong>Additional Message:</strong></p>
-          <p>${demoFormData.message || "No additional message"}</p>
-        `,
-      };
+    // Prepare email data
+    const emailData = {
+      to: "mentorshipclubfl@gmail.com",
+      subject: "New Demo Class Request - " + demoFormData.name,
+      body: `
+New Demo Class Request
 
-      // Send email using the API route
-      const response = await fetch("/api/send-demo-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(emailData),
-      });
+Name: ${demoFormData.name}
+Email: ${demoFormData.email}
+Phone: ${demoFormData.phone || "Not provided"}
+Grade Level: ${demoFormData.grade}
+Areas of Interest: ${demoFormData.interests.join(", ")}
+Preferred Time: ${demoFormData.preferredTime || "Not specified"}
 
-      if (response.ok) {
-        alert(
-          "Demo request submitted successfully! We&apos;ll contact you soon to schedule your free demo class."
-        );
-        setIsDemoModalOpen(false);
-        setDemoFormData({
-          name: "",
-          email: "",
-          phone: "",
-          grade: "",
-          interests: [],
-          preferredTime: "",
-          message: "",
-        });
-      } else {
-        throw new Error("Failed to send email");
-      }
-    } catch (error) {
-      console.error("Error sending email:", error);
-      alert(
-        "Thank you for your interest! We&apos;ve received your demo request and will contact you soon. If you don&apos;t hear from us within 24 hours, please contact us directly."
-      );
-      setIsDemoModalOpen(false);
-      setDemoFormData({
-        name: "",
-        email: "",
-        phone: "",
-        grade: "",
-        interests: [],
-        preferredTime: "",
-        message: "",
-      });
-    }
+Additional Message:
+${demoFormData.message || "No additional message"}
+
+---
+This request was sent from the Mentorship Club demo class form.
+      `.trim(),
+    };
+
+    // Create mailto link
+    const mailtoLink = `mailto:${emailData.to}?subject=${encodeURIComponent(
+      emailData.subject
+    )}&body=${encodeURIComponent(emailData.body)}`;
+
+    // Open email client
+    window.location.href = mailtoLink;
+
+    // Show success message
+    alert(
+      "Your demo class request has been prepared for email. Your default email client should open with a pre-filled email to mentorshipclubfl@gmail.com. Please send the email to complete your request."
+    );
+
+    // Close modal and reset form
+    setIsDemoModalOpen(false);
+    setDemoFormData({
+      name: "",
+      email: "",
+      phone: "",
+      grade: "",
+      interests: [],
+      preferredTime: "",
+      message: "",
+    });
   };
 
   return (
@@ -1407,10 +1382,10 @@ export default function Home() {
               <ul className="space-y-2">
                 <li>
                   <a
-                    href="mailto:info@mentorshipclub.com"
+                    href="mailto:mentorshipclubfl@gmail.com"
                     className="text-white hover:text-yellow-400 transition-colors text-sm"
                   >
-                    info@mentorshipclub.com
+                    mentorshipclubfl@gmail.com
                   </a>
                 </li>
                 <li>
@@ -1422,7 +1397,7 @@ export default function Home() {
                   </a>
                 </li>
                 <li className="text-white text-sm">
-                  123 Mentorship Ave, City, State
+                  10044 NW 2nd St Coral Springs, FLORIDA 33071
                 </li>
               </ul>
             </div>
