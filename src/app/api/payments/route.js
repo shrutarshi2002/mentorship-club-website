@@ -51,6 +51,56 @@ let donations = [
   },
 ];
 
+// Mock users database
+let users = [
+  {
+    id: 1,
+    email: "admin@lms.com",
+    name: "Admin User",
+    role: "admin",
+    isActive: true,
+  },
+  {
+    id: 2,
+    email: "mentor@example.com",
+    name: "Dr. Sarah Wilson",
+    role: "mentor",
+    status: "approved",
+    isActive: true,
+  },
+  {
+    id: 3,
+    email: "student@example.com",
+    name: "John Smith",
+    role: "student",
+    isActive: true,
+  },
+];
+
+// Mock courses database
+let courses = [
+  {
+    id: 1,
+    title: "Web Development Fundamentals",
+    description: "Learn the basics of HTML, CSS, and JavaScript",
+    price: 299,
+    mentorId: 2,
+    isPublished: true,
+  },
+];
+
+// Mock enrollments database
+let enrollments = [
+  {
+    id: 1,
+    studentId: 3,
+    courseId: 1,
+    enrolledAt: "2024-01-20T10:00:00Z",
+    status: "active",
+    mentorId: 2,
+  },
+];
+
 // GET /api/payments - Get payments for current user
 export const GET = requireAuth(async (request) => {
   try {
