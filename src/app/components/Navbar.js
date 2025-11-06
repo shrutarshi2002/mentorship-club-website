@@ -63,6 +63,20 @@ export default function Navbar() {
               >
                 Contact
               </Link>
+
+              {/* Authentication Buttons */}
+              <Link
+                href="/login"
+                className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                Login
+              </Link>
+              <Link
+                href="/register"
+                className="bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700 transition-colors"
+              >
+                Sign Up
+              </Link>
               <Link
                 href="/mentor-application"
                 className="bg-yellow-400 text-black px-4 py-2 rounded-md text-sm font-medium hover:bg-yellow-500 transition-colors"
@@ -269,6 +283,47 @@ export default function Navbar() {
           {/* Action Buttons */}
           <div className="px-6 pb-8">
             <div className="pt-6 border-t border-gray-100 space-y-3">
+              {/* Authentication Buttons */}
+              <Link
+                href="/login"
+                className="flex items-center justify-center w-full bg-white text-red-600 border-2 border-red-600 px-6 py-3 rounded-xl text-base font-semibold hover:bg-red-50 transform hover:scale-105 transition-all duration-200 shadow-md hover:shadow-lg"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                  />
+                </svg>
+                Login
+              </Link>
+              <Link
+                href="/register"
+                className="flex items-center justify-center w-full bg-red-600 text-white px-6 py-3 rounded-xl text-base font-semibold hover:bg-red-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                  />
+                </svg>
+                Sign Up
+              </Link>
               <Link
                 href="/mentor-application"
                 className="flex items-center justify-center w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-3 rounded-xl text-base font-semibold hover:from-yellow-500 hover:to-yellow-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"

@@ -228,6 +228,20 @@ This request was sent from the Mentorship Club demo class form.
                 >
                   Contact
                 </Link>
+
+                {/* Authentication Buttons */}
+                <Link
+                  href="/login"
+                  className="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/register"
+                  className="bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700 transition-colors"
+                >
+                  Sign Up
+                </Link>
               </div>
             </div>
             <div className="md:hidden">
@@ -343,6 +357,22 @@ This request was sent from the Mentorship Club demo class form.
                   className="block px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-lg transition-colors"
                 >
                   Contact
+                </Link>
+
+                {/* Authentication Buttons */}
+                <Link
+                  href="/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/register"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-3 bg-red-600 text-white hover:bg-red-700 rounded-lg transition-colors text-center font-medium"
+                >
+                  Sign Up
                 </Link>
               </div>
             </nav>
