@@ -33,6 +33,32 @@ let uploads = [
   },
 ];
 
+// Mock users database
+let users = [
+  {
+    id: 1,
+    email: "admin@lms.com",
+    name: "Admin User",
+    role: "admin",
+    isActive: true,
+  },
+  {
+    id: 2,
+    email: "mentor@example.com",
+    name: "Dr. Sarah Wilson",
+    role: "mentor",
+    status: "approved",
+    isActive: true,
+  },
+  {
+    id: 3,
+    email: "student@example.com",
+    name: "John Smith",
+    role: "student",
+    isActive: true,
+  },
+];
+
 // Allowed file types by category
 const ALLOWED_FILE_TYPES = {
   assignment_submission: [
