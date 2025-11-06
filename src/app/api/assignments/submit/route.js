@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { requireAuth } from "../middleware/auth";
+import { requireAuth } from "../../middleware/auth";
 
 // Mock submissions database
 let submissions = [

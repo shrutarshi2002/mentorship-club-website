@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { requireAdmin } from "../../middleware/auth";
+import { requireAdmin } from "../../../middleware/auth";
 
 // Mock courses database
 let courses = [
