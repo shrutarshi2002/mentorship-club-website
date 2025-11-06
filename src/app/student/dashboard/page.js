@@ -196,7 +196,7 @@ export default function StudentDashboard() {
                             <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                               <div>
                                 <p className="text-sm text-gray-500">
-                                  Completed assignment: "React Components"
+                                  Completed assignment: &quot;React Components&quot;
                                 </p>
                               </div>
                               <div className="text-right text-sm whitespace-nowrap text-gray-500">
@@ -223,7 +223,7 @@ export default function StudentDashboard() {
                             <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                               <div>
                                 <p className="text-sm text-gray-500">
-                                  Enrolled in new course: "Advanced JavaScript"
+                                  Enrolled in new course: &quot;Advanced JavaScript&quot;
                                 </p>
                               </div>
                               <div className="text-right text-sm whitespace-nowrap text-gray-500">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -13,11 +13,7 @@ export default function AdminUsers() {
   const [userToDelete, setUserToDelete] = useState(null);
   const router = useRouter();
 
-  useEffect(() => {
-    fetchUsers();
-  }, [filterRole]);
-
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
       const url = `/api/admin/users${filterRole !== "all" ? `?role=${filterRole}` : ""}`;
@@ -33,7 +29,11 @@ export default function AdminUsers() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [filterRole]);
+
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers]);
 
   const handleDelete = async () => {
     if (!userToDelete) return;
@@ -274,7 +274,7 @@ export default function AdminUsers() {
               Delete User
             </h3>
             <p className="text-gray-600 mb-6">
-              Are you sure you want to delete user "{userToDelete?.name}"? This action cannot be undone.
+              Are you sure you want to delete user &quot;{userToDelete?.name}&quot;? This action cannot be undone.
             </p>
             <div className="flex justify-end space-x-4">
               <button

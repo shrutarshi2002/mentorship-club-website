@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter, useParams } from "next/navigation";
 
 export default function EditUser() {
@@ -24,13 +24,7 @@ export default function EditUser() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  useEffect(() => {
-    if (userId) {
-      fetchUser();
-    }
-  }, [userId]);
-
-  const fetchUser = async () => {
+  const fetchUser = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(`/api/admin/users/${userId}`, {
@@ -49,7 +43,13 @@ export default function EditUser() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [userId]);
+
+  useEffect(() => {
+    if (userId) {
+      fetchUser();
+    }
+  }, [userId, fetchUser]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

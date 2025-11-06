@@ -248,7 +248,7 @@ export default function AdminCourses() {
               Delete Course
             </h3>
             <p className="text-gray-600 mb-6">
-              Are you sure you want to delete "{courseToDelete?.title}"? This action cannot be undone.
+              Are you sure you want to delete &quot;{courseToDelete?.title}&quot;? This action cannot be undone.
             </p>
             <div className="flex justify-end space-x-4">
               <button

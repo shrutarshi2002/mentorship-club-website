@@ -230,7 +230,7 @@ export default function MentorDashboard() {
                           <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                             <div>
                               <p className="text-sm text-gray-500">
-                                Graded assignment: "React Components" for John
+                                Graded assignment: &quot;React Components&quot; for John
                                 Doe
                               </p>
                             </div>

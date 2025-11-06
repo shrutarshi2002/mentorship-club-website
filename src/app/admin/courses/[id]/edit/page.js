@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter, useParams } from "next/navigation";
 
 export default function EditCourse() {
@@ -24,13 +24,7 @@ export default function EditCourse() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  useEffect(() => {
-    if (courseId) {
-      fetchCourse();
-    }
-  }, [courseId]);
-
-  const fetchCourse = async () => {
+  const fetchCourse = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(`/api/admin/courses/${courseId}`, {
@@ -46,7 +40,13 @@ export default function EditCourse() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [courseId]);
+
+  useEffect(() => {
+    if (courseId) {
+      fetchCourse();
+    }
+  }, [courseId, fetchCourse]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
