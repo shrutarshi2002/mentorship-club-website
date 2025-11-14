@@ -117,17 +117,6 @@ export default function Footer() {
                   mentorshipclubfl@gmail.com
                 </a>
               </li>
-              <li>
-                <a
-                  href="tel:+15551234567"
-                  className="text-white hover:text-yellow-400 transition-colors text-sm"
-                >
-                  +1 (555) 123-4567
-                </a>
-              </li>
-              <li className="text-white text-sm">
-                10044 NW 2nd St Coral Springs, FLORIDA 33071
-              </li>
             </ul>
           </div>
         </div>

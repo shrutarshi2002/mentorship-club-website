@@ -372,6 +372,99 @@ export default function About() {
         </div>
       </section>
 
+      {/* Founder Section */}
+      <section
+        id="founder"
+        ref={setRef("founder")}
+        className="py-20 bg-gradient-to-br from-gray-50 to-blue-50"
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-8">
+              Our Founder
+            </h2>
+          </div>
+
+          <div
+            className={`transform transition-all duration-1000 ${
+              isVisible.founder
+                ? "translate-y-0 opacity-100"
+                : "translate-y-20 opacity-0"
+            }`}
+          >
+            <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100">
+              <div className="text-center mb-8">
+                <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center">
+                  <span className="text-5xl text-white font-bold">K</span>
+                </div>
+                <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                  Komal
+                </h3>
+                <p className="text-xl text-gray-600">Founder & Visionary</p>
+              </div>
+
+              <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+                <p>
+                  I&apos;ve spent more than a decade working across different industries — real estate, digital marketing, healthcare, and business strategy. In every role I took on, one thing stayed constant: I always ended up guiding people. Whether it was helping someone make a smart investment, improving a business system, or supporting a team through challenges, I naturally stepped into the space of mentorship.
+                </p>
+
+                <p>
+                  Over time, I realized something important about myself — <strong>I care deeply about how people grow.</strong> Not just financially, but emotionally, mentally, and in the way they see their own potential.
+                </p>
+
+                <p>
+                  My journey became even more meaningful when I became a parent.
+                </p>
+
+                <p>
+                  Like many parents today, I started noticing how children are growing up in a world that moves too fast. Screens, information overload, pressure, comparison — everything is louder, quicker, and more distracting. And somewhere in between all of this, the essential life skills that shape confident, grounded human beings often get overlooked.
+                </p>
+
+                <p>
+                  I saw kids struggling with focus. I saw them overwhelmed by emotions they didn&apos;t yet know how to express. I saw curiosity fading because answers came faster than questions. And I felt this gap very personally — not just as a parent, but as someone who has guided adults who often lacked these very skills.
+                </p>
+
+                <p>
+                  It made me think: <strong>If adults struggle because they never learned these skills early on, why don&apos;t we start teaching them at the right age — childhood?</strong>
+                </p>
+
+                <p>
+                  That question kept returning to me, again and again. And that became the foundation for Mentorship Club.
+                </p>
+
+                <p>
+                  I didn&apos;t want to create another academic program. I wanted to build a space where learning is human. Where kids can discover mindfulness without feeling pressured, understand money without fear, express emotions safely, communicate with confidence, think deeply, and learn through real-world experiences.
+                </p>
+
+                <p>
+                  Every part of Mentorship Club is shaped by what I&apos;ve learned from life: from managing businesses, supporting entrepreneurs, working with diverse personalities, understanding behavior, and navigating my own parenting journey. It&apos;s a blend of experience, intuition, mindfulness, and a genuine belief that children deserve more than information — they deserve guidance.
+                </p>
+
+                <p>
+                  Here, kids don&apos;t just learn skills. They learn how to understand themselves, how to stay grounded in a world full of noise, how to make decisions they feel proud of, how to communicate, how to build habits, and how to grow into emotionally strong individuals.
+                </p>
+
+                <p>
+                  For me, mentorship is not about teaching someone what to do. <strong>It&apos;s about awakening something inside them — clarity, awareness, curiosity, and confidence.</strong>
+                </p>
+
+                <p>
+                  This work is close to my heart because I&apos;ve seen what happens when children grow with the right support. Their eyes brighten. Their questions get deeper. Their confidence blossoms. And they grow into thoughtful, strong, self-aware young adults who are ready for the real world — not just the academic one.
+                </p>
+
+                <p className="text-xl font-semibold text-gray-900 pt-6 border-t border-gray-200">
+                  Mentorship Club is my way of giving children what I wish every young mind could receive: a safe, grounded, mindful space to grow, learn, explore, and feel understood.
+                </p>
+
+                <p className="text-xl font-semibold text-gray-900">
+                  That is why I built this. And that is why this mission matters to me — deeply and personally.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Core Programs Section */}
       <section
         id="programs"
@@ -957,9 +1050,14 @@ export default function About() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>mentorshipclubfl@gmail.com</li>
-                <li>+1 (555) 123-4567</li>
-                <li>10044 NW 2nd St Coral Springs, FLORIDA 33071</li>
+                <li>
+                  <a
+                    href="mailto:mentorshipclubfl@gmail.com"
+                    className="hover:text-white transition-colors"
+                  >
+                    mentorshipclubfl@gmail.com
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

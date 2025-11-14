@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { workshops } from "../data/workshops";
 
 const slides = [
   {
@@ -61,6 +62,7 @@ export default function Home() {
     message: "",
   });
   const [openFAQ, setOpenFAQ] = useState(null);
+  const [openWorkshop, setOpenWorkshop] = useState(null);
 
   const nextSlide = useCallback(() => {
     if (!isTransitioning) {
@@ -423,7 +425,7 @@ This request was sent from the Mentorship Club demo class form.
               <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-20 sm:pb-12 lg:py-0">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                   {/* Left Side - Content */}
-                  <div className="text-gray-900 order-2 lg:order-1">
+                  <div className="text-gray-900 order-2 lg:order-1 text-center lg:text-left">
                     <div
                       className={`animate-fade-in-up ${
                         index === currentSlide ? "animate-fade-in-up" : ""
@@ -455,7 +457,7 @@ This request was sent from the Mentorship Club demo class form.
                         index === currentSlide ? "animate-fade-in-up" : ""
                       }`}
                     >
-                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-stretch justify-center lg:justify-start">
                         {slide.id === 2 ? (
                           <Link
                             href="/mentor-application"
@@ -497,28 +499,19 @@ This request was sent from the Mentorship Club demo class form.
 
                   {/* Right Side - Image */}
                   {slide.image && (
-                    <div className="block order-1 lg:order-2">
-                      <div className="relative">
-                        <div
-                          className={`w-full rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300 ${
-                            slide.id === 1
-                              ? "h-[200px] sm:h-[400px] md:h-[500px] lg:h-[800px]"
-                              : "h-[300px] sm:h-[400px] md:h-[500px] lg:h-[800px]"
-                          }`}
-                        >
-                          <Image
-                            src={slide.image}
-                            alt={slide.title}
-                            className={`w-full h-full ${
-                              slide.id === 1
-                                ? "object-contain object-center"
-                                : "object-contain object-center"
-                            }`}
-                            loading="eager"
-                            width={800}
-                            height={800}
-                          />
-                        </div>
+                    <div className="order-1 lg:order-2 flex justify-center">
+                      <div
+                        className={`relative w-full max-w-[300px] sm:max-w-[420px] md:max-w-[520px] lg:max-w-none lg:h-[680px]`}
+                      >
+                        <Image
+                          src={slide.image}
+                          alt={slide.title}
+                          width={800}
+                          height={800}
+                          priority={index === currentSlide}
+                          className="w-full h-auto lg:h-full object-contain drop-shadow-xl"
+                          sizes="(min-width: 1280px) 36vw, (min-width: 1024px) 45vw, (min-width: 640px) 60vw, 80vw"
+                        />
                       </div>
                     </div>
                   )}
@@ -590,267 +583,128 @@ This request was sent from the Mentorship Club demo class form.
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Why Mentorship Club?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We go beyond traditional education to provide real-world skills,
-              personal development, and lasting connections.
-            </p>
+            <div className="text-lg text-gray-700 max-w-4xl mx-auto space-y-6 text-left">
+              <p>
+                Children today are growing up in a world full of noise, screens, and distractions. While traditional education teaches them academics, it often leaves little room for emotional awareness, practical life skills, confident communication, and mindful living.
+              </p>
+              <p>
+                Mentorship Club was created to fill that gap — gently, positively, and purposefully.
+              </p>
+              <p>
+                We bring together parents, mentors, and young learners to build a space where learning feels real, human, and connected to life. Our programs are designed to nurture the whole child — their focus, curiosity, emotional strength, decision-making, and inner confidence.
+              </p>
+              <p>
+                At Mentorship Club, every child is supported, guided, and encouraged to grow at their own pace in a mindful, warm, and meaningful environment.
+              </p>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-6">
-                <svg
-                  className="w-8 h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
+                <span className="text-3xl">🌿</span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Expert Guidance
               </h3>
               <p className="text-gray-600">
-                Learn from industry professionals and experienced mentors who
-                have walked the path you&apos;re on.
+                Children learn best when guided by people who truly understand them. At Mentorship Club, kids and youth connect with mentors who bring real-life experience, compassion, and practical wisdom. Whether it&apos;s emotional intelligence, mindfulness, communication, or money awareness — our mentors walk with them, gently showing the possibilities ahead.
               </p>
             </div>
 
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-red-500 rounded-full flex items-center justify-center mb-6">
-                <svg
-                  className="w-8 h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
+                <span className="text-3xl">🤝</span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Community Support
               </h3>
               <p className="text-gray-600">
-                Join a network of like-minded individuals who support and
-                encourage each other&apos;s growth.
+                Growing up becomes easier when you&apos;re part of a caring community. We bring together parents, mentors, and young learners who support, encourage, and learn from one another. It&apos;s a safe space where questions are welcomed, feelings are understood, and growth is celebrated — together.
               </p>
             </div>
 
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-6">
-                <svg
-                  className="w-8 h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l9 7 9-7M3 17l9-7 9 7"
-                  />
-                </svg>
+                <span className="text-3xl">🌱</span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Real-World Projects
               </h3>
               <p className="text-gray-600">
-                Gain hands-on experience by working on projects that matter.
+                Learning becomes meaningful when it connects to real life. Through small projects, mindful tasks, and practical activities, children learn how to think, explore, solve problems, and express themselves with confidence. These experiences build independence, creativity, and a deeper awareness of the world around them.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Programs Overview */}
-      <section className="py-20 bg-white">
+      {/* Our Workshop Overview */}
+      <section className="py-20 bg-white" id="workshops">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-3">
-              Our Programs Overview
+              Our Workshop Overview
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore high-impact tracks designed to build real skills across
-              marketing, AI, and personal growth.
+              Explore high-impact workshops designed to build life skills, creativity, financial confidence, wellness, leadership, and more for children aged 7-16.
             </p>
           </div>
 
-          {(() => {
-            const programs = [
-              {
-                id: "marketing-branding",
-                title: "Marketing & Branding",
-                desc: "How to shape and promote products, services, or yourself with clarity and creativity.",
-                image: "/assets/program/1.png",
-              },
-              {
-                id: "social-media-strategy",
-                title: "Social Media Strategy",
-                desc: "Understanding how platforms work and how to build an impactful online presence.",
-                image: "/assets/program/2.png",
-              },
-              {
-                id: "content-creation",
-                title: "Content Creation",
-                desc: "Using design, video, and storytelling tools to create engaging content.",
-                image: "/assets/program/3.png",
-              },
-              {
-                id: "digital-advertising",
-                title: "Digital Advertising",
-                desc: "Basics of running ad campaigns and reaching the right audience.",
-                image: "/assets/program/4.png",
-              },
-              {
-                id: "influencer-campaign-marketing",
-                title: "Influencer & Campaign Marketing",
-                desc: "Planning and executing influencer strategies and brand partnerships.",
-                image: "/assets/program/5.png",
-              },
-              {
-                id: "entrepreneurial-marketing",
-                title: "Entrepreneurial Marketing",
-                desc: "Turning ideas into offers, building funnels, and pitching with purpose.",
-                image: "/assets/program/6.png",
-              },
-              {
-                id: "ai-fundamentals",
-                title: "AI Fundamentals",
-                desc: "Core AI concepts and understanding how AI is reshaping the world.",
-                image: "/assets/program/7.png",
-              },
-              {
-                id: "prompt-engineering",
-                title: "Prompt Engineering",
-                desc: "Using tools like ChatGPT for writing, thinking, and creativity.",
-                image: "/assets/program/8.png",
-              },
-              {
-                id: "no-code-ai-tools",
-                title: "No-Code AI Tools",
-                desc: "Creating simple apps or automations using visual platforms.",
-                image: "/assets/program/9.png",
-              },
-              {
-                id: "mini-chatbot-projects",
-                title: "Mini Chatbot Projects",
-                desc: "Designing basic interactive bots that can assist or guide.",
-                image: "/assets/program/10.png",
-              },
-              {
-                id: "python-basics",
-                title: "Python Basics",
-                desc: "Learning foundational programming skills through simple projects.",
-                image: "/assets/program/11.png",
-              },
-              {
-                id: "ai-in-real-life",
-                title: "AI in Real Life",
-                desc: "Exploring how AI is applied in fields like health, art, business, and more.",
-                image: "/assets/program/12.png",
-              },
-              {
-                id: "public-speaking",
-                title: "Public Speaking",
-                desc: "Building confidence and clarity while communicating in front of others.",
-                image: "/assets/program/13.png",
-              },
-              {
-                id: "pitching-for-entrepreneurs",
-                title: "Pitching for Entrepreneurs",
-                desc: "Creating strong, clear pitches for projects, businesses, or ideas.",
-                image: "/assets/program/14.png",
-              },
-              {
-                id: "creative-thinking",
-                title: "Creative Thinking",
-                desc: "Practicing innovation, brainstorming, and idea development.",
-                image: "/assets/program/15.png",
-              },
-              {
-                id: "interview-impression-skills",
-                title: "Interview & Impression Skills",
-                desc: "Preparing to present yourself with clarity, confidence, and professionalism.",
-                image: "/assets/program/16.png",
-              },
-              {
-                id: "networking-conversation",
-                title: "Networking & Conversation",
-                desc: "Strengthening real-world social interaction and connection skills.",
-                image: "/assets/program/17.png",
-              },
-              {
-                id: "confidence-presence",
-                title: "Confidence & Presence",
-                desc: "Improving mindset, self-belief, and personal presence.",
-                image: "/assets/program/18.png",
-              },
-            ];
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {workshops.map((workshop, index) => (
+              <div
+                key={workshop.id}
+                className="rounded-3xl border border-gray-100 bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={`/assets/workshop/${index + 1}.png`}
+                    alt={workshop.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
-            return (
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {programs.map((p, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
-                  >
-                    {/* Program Image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={p.image}
-                        alt={p.title}
-                        fill
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-
-                    <div className="p-6">
-                      <div className="mb-3">
-                        <span className="inline-flex items-center gap-2 rounded-full bg-gray-50 px-3 py-1 text-xs font-semibold text-gray-600">
-                          <span className="block h-2 w-2 rounded-full bg-green-500"></span>
-                          Program
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
-                        {p.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        {p.desc}
-                      </p>
-                    </div>
-                    <div className="px-6 pb-6">
-                      <Link
-                        href={`/courses/${p.id}`}
-                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-900 hover:border-gray-300 hover:bg-gray-50 transition-colors block text-center"
-                      >
-                        View Program
-                      </Link>
-                    </div>
+                <div className="p-6 space-y-3">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-yellow-600">
+                    <span>{workshop.number}</span>
+                    <span>{workshop.ageGroup}</span>
                   </div>
-                ))}
-              </div>
-            );
-          })()}
+                  <h3 className="text-xl font-bold text-gray-900 leading-snug">
+                    {workshop.title}
+                  </h3>
+                  <p className="text-sm text-gray-500">{workshop.format}</p>
 
-          <div className="mt-10 text-center">
-            <Link
-              href="/programs"
-              className="inline-block rounded-xl bg-gray-900 text-white px-6 py-3 font-semibold hover:bg-black/90 transition-colors"
-            >
-              View All Programs
-            </Link>
+                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-4">
+                    {workshop.about[0]}
+                  </p>
+                </div>
+
+                <div className="px-6 pb-6">
+                  <Link
+                    href={`/workshops/${workshop.id}`}
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-900 hover:border-gray-300 hover:bg-gray-50 transition-colors"
+                  >
+                    View Workshop Details
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1103,200 +957,456 @@ This request was sent from the Mentorship Club demo class form.
               </div>
 
               {/* FAQ Item 5 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q5. What skills or courses are available?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Our skill areas include communication, public speaking,
-                  leadership, entrepreneurship, marketing, coding, financial
-                  literacy, creativity, design, and problem-solving. We keep
-                  expanding the topics to stay relevant to modern needs.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 5 ? null : 5)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q5. What skills or courses are available?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 5 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 5 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Our skill areas include communication, public speaking,
+                      leadership, entrepreneurship, marketing, coding, financial
+                      literacy, creativity, design, and problem-solving. We keep
+                      expanding the topics to stay relevant to modern needs.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 6 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q6. How are sessions conducted?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  All sessions are held online to ensure accessibility for
-                  everyone. They may be in workshop format (interactive group
-                  learning), one-to-one sessions (personal guidance), or even
-                  collaborative projects.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 6 ? null : 6)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q6. How are sessions conducted?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 6 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 6 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      All sessions are held online to ensure accessibility for
+                      everyone. They may be in workshop format (interactive group
+                      learning), one-to-one sessions (personal guidance), or even
+                      collaborative projects.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 7 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q7. What is the difference between workshops and one-to-one
-                  mentoring?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Workshops are topic-based sessions attended by many learners
-                  together, while one-to-one mentoring is personalized to your
-                  unique challenges and goals. Both formats complement each
-                  other depending on your needs.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 7 ? null : 7)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q7. What is the difference between workshops and one-to-one
+                    mentoring?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 7 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 7 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Workshops are topic-based sessions attended by many learners
+                      together, while one-to-one mentoring is personalized to your
+                      unique challenges and goals. Both formats complement each
+                      other depending on your needs.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 8 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q8. Do I need prior experience?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  No prior knowledge is necessary. Our programs are designed to
-                  start from basics and gradually build up to advanced concepts,
-                  so even beginners can benefit fully.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 8 ? null : 8)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q8. Do I need prior experience?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 8 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 8 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      No prior knowledge is necessary. Our programs are designed to
+                      start from basics and gradually build up to advanced concepts,
+                      so even beginners can benefit fully.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 9 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q9. Can I choose my own mentor?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  You can suggest preferences, but final matching is done by our
-                  team based on your profile and the mentor&apos;s expertise.
-                  This ensures you get the right fit for your goals.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 9 ? null : 9)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q9. Can I choose my own mentor?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 9 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 9 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      You can suggest preferences, but final matching is done by our
+                      team based on your profile and the mentor&apos;s expertise.
+                      This ensures you get the right fit for your goals.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 10 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q10. How long do programs last?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Short workshops may run 1–3 hours, while structured mentorship
-                  programs may extend for weeks or even months. The duration
-                  depends on your chosen track.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 10 ? null : 10)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q10. How long do programs last?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 10 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 10 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Short workshops may run 1–3 hours, while structured mentorship
+                      programs may extend for weeks or even months. The duration
+                      depends on your chosen track.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 11 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q11. Will I get a certificate?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Yes, mentees receive certificates of participation or
-                  completion, which can be added to resumes, portfolios, or
-                  LinkedIn profiles to showcase your new skills.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 11 ? null : 11)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q11. Will I get a certificate?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 11 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 11 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Yes, mentees receive certificates of participation or
+                      completion, which can be added to resumes, portfolios, or
+                      LinkedIn profiles to showcase your new skills.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 12 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q12. Is there a cost?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Our mentorship initiative is primarily free as we are an NGO.
-                  However, some advanced or specialized programs may require a
-                  minimal fee to cover resources.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 12 ? null : 12)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q12. Is there a cost?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 12 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 12 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Our mentorship initiative is primarily free as we are an NGO.
+                      However, some advanced or specialized programs may require a
+                      minimal fee to cover resources.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 13 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q13. Can I switch courses or mentors?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Yes. If a course isn&apos;t the right fit or you feel better
-                  guidance is needed, you can request a change. We value
-                  flexibility to suit your learning journey.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 13 ? null : 13)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q13. Can I switch courses or mentors?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 13 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 13 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Yes. If a course isn&apos;t the right fit or you feel better
+                      guidance is needed, you can request a change. We value
+                      flexibility to suit your learning journey.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 14 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q14. What if I don&apos;t know what skill to focus on?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  That&apos;s normal. We provide guidance through assessments
-                  and conversations to help identify your strengths, interests,
-                  and most suitable courses.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 14 ? null : 14)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q14. What if I don&apos;t know what skill to focus on?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 14 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 14 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      That&apos;s normal. We provide guidance through assessments
+                      and conversations to help identify your strengths, interests,
+                      and most suitable courses.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 15 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q15. Can this help me academically?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Yes. Although designed for practical learning, mentees often
-                  notice better performance in studies thanks to improved
-                  confidence, focus, and problem-solving.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 15 ? null : 15)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q15. Can this help me academically?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 15 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 15 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Yes. Although designed for practical learning, mentees often
+                      notice better performance in studies thanks to improved
+                      confidence, focus, and problem-solving.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 16 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q16. Are there business-focused programs?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Yes, we support entrepreneurs with mentoring on branding,
-                  digital presence, marketing, scaling, financial management,
-                  and leadership.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 16 ? null : 16)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q16. Are there business-focused programs?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 16 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 16 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Yes, we support entrepreneurs with mentoring on branding,
+                      digital presence, marketing, scaling, financial management,
+                      and leadership.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 17 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q17. Can I get internships?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Yes. Many mentors from professional backgrounds also offer
-                  internships. These opportunities are managed separately to
-                  ensure mentees are prepared before joining.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 17 ? null : 17)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q17. Can I get internships?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 17 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 17 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Yes. Many mentors from professional backgrounds also offer
+                      internships. These opportunities are managed separately to
+                      ensure mentees are prepared before joining.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 18 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q18. How will this help me in real life?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Mentorship prepares you for real-world challenges, from
-                  interviews to running a business. It builds life skills like
-                  decision-making, teamwork, and leadership that schools rarely
-                  focus on.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 18 ? null : 18)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q18. How will this help me in real life?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 18 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 18 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Mentorship prepares you for real-world challenges, from
+                      interviews to running a business. It builds life skills like
+                      decision-making, teamwork, and leadership that schools rarely
+                      focus on.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 19 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q19. Do mentees get career guidance?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Yes. Career clarity sessions, resume reviews, interview
-                  practice, and industry insights are part of what mentors
-                  provide to prepare you for the future.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 19 ? null : 19)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q19. Do mentees get career guidance?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 19 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 19 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Yes. Career clarity sessions, resume reviews, interview
+                      practice, and industry insights are part of what mentors
+                      provide to prepare you for the future.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* FAQ Item 20 */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Q20. How do I register?
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Simply sign up on our website. After reviewing your details,
-                  our NGO team connects you with suitable workshops, mentors, or
-                  career pathways.
-                </p>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  onClick={() => setOpenFAQ(openFAQ === 20 ? null : 20)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Q20. How do I register?
+                  </h3>
+                  <span
+                    className={`text-2xl transition-transform duration-200 ${
+                      openFAQ === 20 ? "rotate-45" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFAQ === 20 && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      Simply sign up on our website. After reviewing your details,
+                      our NGO team connects you with suitable workshops, mentors, or
+                      career pathways.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -1417,17 +1527,6 @@ This request was sent from the Mentorship Club demo class form.
                   >
                     mentorshipclubfl@gmail.com
                   </a>
-                </li>
-                <li>
-                  <a
-                    href="tel:+15551234567"
-                    className="text-white hover:text-yellow-400 transition-colors text-sm"
-                  >
-                    +1 (555) 123-4567
-                  </a>
-                </li>
-                <li className="text-white text-sm">
-                  10044 NW 2nd St Coral Springs, FLORIDA 33071
                 </li>
               </ul>
             </div>
