@@ -18,7 +18,7 @@ export default async function WorkshopDetailPage({ params }) {
             Workshop Not Found
           </h1>
           <p className="text-gray-600 mb-8">
-            The workshop you're looking for doesn't exist.
+            The workshop you&apos;re looking for doesn&apos;t exist.
           </p>
           <Link
             href="/#workshops"
@@ -84,7 +84,7 @@ export default async function WorkshopDetailPage({ params }) {
             <div className="relative">
               <div className="w-full h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src={`/assets/workshop/${workshopIndex >= 0 ? workshopIndex + 1 : 1}.png`}
+                  src={`/assets/workshop/${workshopIndex + 1}.png`}
                   alt={workshop.title}
                   fill
                   className="object-cover"
