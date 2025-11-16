@@ -58,42 +58,42 @@ export default function About() {
     {
       title: "Excellence",
       description:
-        "We strive for the highest quality in everything we do, from our programs to our relationships.",
+        "We uphold a high standard of care, empathy, and intentional teaching in everything we do — because children deserve nothing less.",
       icon: "⭐",
       color: "from-yellow-400 to-orange-500",
     },
     {
       title: "Integrity",
       description:
-        "We operate with honesty, transparency, and ethical practices in all our interactions.",
+        "We operate with honesty, clarity, and transparency. Every interaction is rooted in trust and respect for the child and their family.",
       icon: "🤝",
       color: "from-blue-400 to-indigo-500",
     },
     {
       title: "Innovation",
       description:
-        "We continuously evolve our methods and approaches to meet changing needs and opportunities.",
+        "We approach learning with creativity and adaptability — blending modern methods with mindful, real-world practices that make education meaningful.",
       icon: "💡",
       color: "from-purple-400 to-pink-500",
     },
     {
       title: "Community",
       description:
-        "We believe in the power of collective growth and supportive relationships.",
+        "We believe children grow best in safe, supportive communities. We create nurturing spaces where parents, mentors, and young learners grow together.",
       icon: "🌱",
       color: "from-green-400 to-teal-500",
     },
     {
       title: "Empowerment",
       description:
-        "We enable individuals to take control of their personal and professional development.",
+        "We help children, teens, and parents take ownership of their mental, emotional, and practical development — giving them tools that last a lifetime.",
       icon: "🚀",
       color: "from-red-400 to-pink-500",
     },
     {
       title: "Inclusivity",
       description:
-        "We welcome and support people from all backgrounds, experiences, and perspectives.",
+        "We welcome learners from all backgrounds, learning styles, and abilities, ensuring every child feels seen, valued, and supported.",
       icon: "🌈",
       color: "from-indigo-400 to-purple-500",
     },
@@ -104,42 +104,42 @@ export default function About() {
       number: "01",
       title: "Personalized Matching",
       description:
-        "Our AI-powered algorithm matches mentees with mentors based on goals, experience, personality, and availability, ensuring optimal compatibility.",
+        "We match learners with mentors based on goals, interests, personality, and comfort—so every child feels seen, understood, and supported.",
       color: "from-blue-500 to-purple-600",
     },
     {
       number: "02",
-      title: "Structured Programs",
+      title: "Structured Yet Flexible Programs",
       description:
-        "We offer structured mentorship programs with clear objectives, milestones, and progress tracking to ensure measurable outcomes.",
+        "Our workshops are designed with clarity and purpose but delivered in a warm, conversational, child-friendly way. Children learn through stories, examples, real-life scenarios, and mindful exercises—not pressure.",
       color: "from-green-500 to-teal-600",
     },
     {
       number: "03",
       title: "Community Support",
       description:
-        "Beyond one-on-one mentorship, we foster a supportive community where members can learn from each other and build lasting relationships.",
+        "Mentorship is not a one-way relationship. We foster a supportive environment where parents, mentors, and kids learn together, share insights, and celebrate progress.",
       color: "from-red-500 to-pink-600",
     },
     {
       number: "04",
       title: "Continuous Learning",
       description:
-        "We provide ongoing resources, workshops, and events to support continuous growth and development for both mentors and mentees.",
+        "We offer ongoing workshops, reading circles, conversations, and resources to support consistent character development and emotional growth.",
       color: "from-yellow-500 to-orange-600",
     },
     {
       number: "05",
-      title: "Technology Integration",
+      title: "Technology Integration (Mindfully Used)",
       description:
-        "Our platform leverages cutting-edge technology to facilitate seamless communication, progress tracking, and resource sharing.",
+        "Technology is used with intention—not as distraction. We use it for visual learning, collaboration, and creativity while encouraging children to reduce screen dependency and develop focus.",
       color: "from-indigo-500 to-purple-600",
     },
     {
       number: "06",
       title: "Impact Measurement",
       description:
-        "We continuously measure and analyze the impact of our programs to ensure we&apos;re delivering real value and improving outcomes.",
+        "We track progress not through marks, but through confidence, communication, emotional balance, real-life application, and mindset shifts. These are the real indicators of meaningful transformation.",
       color: "from-cyan-500 to-blue-600",
     },
   ];
@@ -245,12 +245,13 @@ export default function About() {
       <section className="pt-8 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            About <span className="text-red-600">Mentorship Club</span>
+            🌿 About Mentorship Club
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We&apos;re on a mission to transform lives through meaningful
-            mentorship, real-world skills, and authentic connections that go
-            beyond traditional education.
+            We&apos;re on a mission to help children and youth grow beyond screens, traditional academics, and pressure-driven systems. Through mindful mentorship, real-world learning, and emotionally aware programs, we create experiences that build confidence, focus, resilience, and life skills—the things that truly shape a child&apos;s future.
+          </p>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
+            Mentorship Club brings together parents, educators, mentors, and children in a safe, supportive learning space where curiosity, emotional safety, and connection come first.
           </p>
         </div>
       </section>
@@ -260,11 +261,13 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              Who We Are
+              🌱 Who We Are
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A revolutionary platform that bridges the gap between traditional
-              education and real-world success.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              A mindful learning community designed to bridge the gap between traditional education and real-world wisdom.
+            </p>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We focus on what schools often miss: emotional intelligence, life skills, financial awareness, problem-solving, communication, mindfulness, and personal growth.
             </p>
           </div>
 
@@ -278,27 +281,13 @@ export default function About() {
             >
               <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 h-full">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
+                  <span className="text-3xl">🎯</span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   Our Mission
                 </h3>
                 <p className="text-gray-600">
-                  To democratize access to mentorship by connecting experienced
-                  professionals with eager learners through innovative
-                  technology and proven methodologies.
+                  To democratize meaningful mentorship by connecting children with compassionate, skilled adults who help them discover confidence, clarity, and purpose—through mindful learning and guided exploration.
                 </p>
               </div>
             </div>
@@ -312,25 +301,11 @@ export default function About() {
             >
               <div className="bg-gradient-to-br from-red-500 to-pink-600 p-8 rounded-3xl shadow-xl text-white h-full">
                 <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                    />
-                  </svg>
+                  <span className="text-3xl">💚</span>
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Our Core Belief</h3>
                 <p className="text-red-50">
-                  &ldquo;Success is not just about what you know, but about who
-                  you become and the relationships you build along the
-                  way.&rdquo;
+                  Success isn&apos;t defined by marks or degrees, but by who a child becomes—their self-belief, emotional strength, values, and the relationships that guide them along the way. We believe every child deserves a mentor who sees them, supports them, and believes in their potential.
                 </p>
               </div>
             </div>
@@ -344,27 +319,13 @@ export default function About() {
             >
               <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 h-full">
                 <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
+                  <span className="text-3xl">🤝</span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   Community First
                 </h3>
                 <p className="text-gray-600">
-                  We believe that true learning happens through meaningful
-                  relationships, practical experiences, and personalized
-                  guidance.
+                  We grow together. Our programs are built on connection—between kids, mentors, and parents—so every learner feels supported emotionally, mentally, and socially. We focus on kindness, mindfulness, collaboration, and confidence-building.
                 </p>
               </div>
             </div>
@@ -372,7 +333,117 @@ export default function About() {
         </div>
       </section>
 
-      {/* Founder Section */}
+      {/* Core Programs Section */}
+      <section
+        id="programs"
+        ref={setRef("programs")}
+        className="py-20 bg-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-8">
+              🌈 Our Core Programs
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Three pillars that help children grow into confident, capable, emotionally resilient young adults.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div
+              className={`transform transition-all duration-1000 ${
+                isVisible.programs
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-20 opacity-0"
+              }`}
+            >
+              <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-8 rounded-3xl shadow-xl text-white h-full">
+                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                  <span className="text-3xl">1️⃣</span>
+                </div>
+                <h3 className="text-2xl font-bold mb-4">
+                  Hands-On Career Exploration
+                </h3>
+                <p className="text-blue-100 mb-4">
+                  Children learn best when they experience the real world. We introduce students to different industries and skills through interactive sessions, storytelling, discussions, and simple practical exposure—helping them understand how the world works and where they fit within it.
+                </p>
+                <div className="mt-4 pt-4 border-t border-white/20">
+                  <p className="text-sm font-semibold mb-2">What Kids Gain:</p>
+                  <ul className="text-sm text-blue-100 space-y-1">
+                    <li>• Curiosity about real careers</li>
+                    <li>• Confidence asking questions</li>
+                    <li>• Understanding different skills</li>
+                    <li>• Early direction and clarity</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className={`transform transition-all duration-1000 delay-200 ${
+                isVisible.programs
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-20 opacity-0"
+              }`}
+            >
+              <div className="bg-gradient-to-br from-purple-500 to-pink-600 p-8 rounded-3xl shadow-xl text-white h-full">
+                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                  <span className="text-3xl">2️⃣</span>
+                </div>
+                <h3 className="text-2xl font-bold mb-4">
+                  Life Skills & Emotional Confidence
+                </h3>
+                <p className="text-purple-100 mb-4">
+                  Life doesn&apos;t come with a manual—but children can learn the skills that help them grow with balance, emotional maturity, and purpose. From communication to mindfulness, emotional intelligence to problem-solving, we help kids build the inner strength needed to thrive beyond academics.
+                </p>
+                <div className="mt-4 pt-4 border-t border-white/20">
+                  <p className="text-sm font-semibold mb-2">Focus Areas:</p>
+                  <ul className="text-sm text-purple-100 space-y-1">
+                    <li>• Emotional intelligence</li>
+                    <li>• Mindfulness & focus</li>
+                    <li>• Decision-making</li>
+                    <li>• Communication & confidence</li>
+                    <li>• Healthy self-esteem</li>
+                    <li>• Real-world challenges & reflection</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className={`transform transition-all duration-1000 delay-400 ${
+                isVisible.programs
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-20 opacity-0"
+              }`}
+            >
+              <div className="bg-gradient-to-br from-green-500 to-teal-600 p-8 rounded-3xl shadow-xl text-white h-full">
+                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                  <span className="text-3xl">3️⃣</span>
+                </div>
+                <h3 className="text-2xl font-bold mb-4">
+                  Hands-On Projects & Real-World Learning
+                </h3>
+                <p className="text-green-100 mb-4">
+                  Children participate in simple, meaningful projects that teach initiative, teamwork, planning, leadership, and creative problem-solving. These projects build responsibility and give kids a sense of ownership and pride.
+                </p>
+                <div className="mt-4 pt-4 border-t border-white/20">
+                  <p className="text-sm font-semibold mb-2">What They Experience:</p>
+                  <ul className="text-sm text-green-100 space-y-1">
+                    <li>• Planning and completing small projects</li>
+                    <li>• Practicing leadership and teamwork</li>
+                    <li>• Creative thinking</li>
+                    <li>• Real-world application of knowledge</li>
+                    <li>• Reflection and self-awareness</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About the Founder Section */}
       <section
         id="founder"
         ref={setRef("founder")}
@@ -381,7 +452,7 @@ export default function About() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              Our Founder
+              About the Founder
             </h2>
           </div>
 
@@ -465,123 +536,15 @@ export default function About() {
         </div>
       </section>
 
-      {/* Core Programs Section */}
-      <section
-        id="programs"
-        ref={setRef("programs")}
-        className="py-20 bg-white"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              Our Core Programs
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Three transformative pillars that prepare students for real-world
-              success beyond traditional academics.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div
-              className={`transform transition-all duration-1000 ${
-                isVisible.programs
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-20 opacity-0"
-              }`}
-            >
-              <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-8 rounded-3xl shadow-xl text-white h-full">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold mb-4">
-                  Hands-On Career Exploration
-                </h3>
-                <p className="text-blue-100">
-                  Early exposure to real industries through live sessions,
-                  shadowing, and practical simulations.
-                </p>
-              </div>
-            </div>
-
-            <div
-              className={`transform transition-all duration-1000 delay-200 ${
-                isVisible.programs
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-20 opacity-0"
-              }`}
-            >
-              <div className="bg-gradient-to-br from-purple-500 to-pink-600 p-8 rounded-3xl shadow-xl text-white h-full">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold mb-4">
-                  College Prep & Competitive Mentorship
-                </h3>
-                <p className="text-purple-100">
-                  Support with applications, essay writing, and navigating
-                  admissions—with guidance from elite mentors.
-                </p>
-              </div>
-            </div>
-
-            <div
-              className={`transform transition-all duration-1000 delay-400 ${
-                isVisible.programs
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-20 opacity-0"
-              }`}
-            >
-              <div className="bg-gradient-to-br from-green-500 to-teal-600 p-8 rounded-3xl shadow-xl text-white h-full">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold mb-4">
-                  Life Skills & Emotional Confidence
-                </h3>
-                <p className="text-green-100">
-                  Sessions that build clarity, resilience, and the social skills
-                  needed to succeed beyond academics.
-                </p>
-              </div>
-            </div>
-          </div>
+      {/* The Heart of Mentorship Club Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            🌟 The Heart of Mentorship Club
+          </h2>
+          <p className="text-xl text-gray-700 leading-relaxed">
+            We&apos;re here to prepare children not just for exams—but for life. For challenges, decisions, emotions, independence, confidence, compassion, and purpose. Every workshop, every session, every conversation is designed to help young minds grow with awareness, curiosity, and balance.
+          </p>
         </div>
       </section>
 
@@ -632,11 +595,10 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              Our Approach
+              🌿 Our Approach
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We&apos;ve developed a unique methodology that combines proven
-              mentorship principles with innovative technology.
+              A thoughtful blend of mentorship principles, mindful practices, and modern learning methods.
             </p>
           </div>
 
@@ -676,11 +638,10 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              Vision, Mission & Values
+              🌿 Vision, Mission & Values
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The guiding principles that drive everything we do at Mentorship
-              Club.
+              The guiding principles that shape everything we do at Mentorship Club.
             </p>
           </div>
 
@@ -695,9 +656,7 @@ export default function About() {
               <div className="bg-gradient-to-br from-blue-600 to-purple-700 p-8 rounded-3xl shadow-xl text-white h-full">
                 <h3 className="text-3xl font-bold mb-6">Our Vision</h3>
                 <p className="text-xl leading-relaxed text-blue-100">
-                  To create a world where every individual has access to
-                  meaningful mentorship, enabling them to unlock their full
-                  potential and achieve their dreams.
+                  To create a world where every child and young learner receives meaningful mentorship — building the confidence, awareness, and life skills they need to thrive beyond screens, classrooms, and traditional expectations.
                 </p>
               </div>
             </div>
@@ -712,9 +671,7 @@ export default function About() {
               <div className="bg-gradient-to-br from-red-600 to-pink-700 p-8 rounded-3xl shadow-xl text-white h-full">
                 <h3 className="text-3xl font-bold mb-6">Our Mission</h3>
                 <p className="text-xl leading-relaxed text-red-100">
-                  To democratize access to mentorship by connecting experienced
-                  professionals with eager learners through innovative
-                  technology and proven methodologies.
+                  To democratize mentorship by connecting children, parents, and growing minds with experienced mentors who share real-world wisdom, mindful practices, and practical knowledge through simple, engaging, human-centered learning.
                 </p>
               </div>
             </div>
@@ -729,9 +686,7 @@ export default function About() {
               <div className="bg-gradient-to-br from-green-600 to-teal-700 p-8 rounded-3xl shadow-xl text-white h-full">
                 <h3 className="text-3xl font-bold mb-6">Our Purpose</h3>
                 <p className="text-xl leading-relaxed text-green-100">
-                  We exist to bridge the gap between education and real-world
-                  success, fostering authentic relationships that transform
-                  lives.
+                  We exist to bridge the gap between education and real-life readiness. Our purpose is to cultivate mindful learners, stronger families, emotionally aware children, and authentic mentor-mentee relationships that inspire growth, resilience, and lifelong curiosity.
                 </p>
               </div>
             </div>

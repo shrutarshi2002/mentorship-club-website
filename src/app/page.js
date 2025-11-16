@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { workshops } from "../data/workshops";
+import { workshops, parentWorkshops } from "../data/workshops";
 
 const slides = [
   {
@@ -581,7 +581,7 @@ This request was sent from the Mentorship Club demo class form.
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Mentorship Club?
+              ✅ Why Mentorship Club?
             </h2>
             <div className="text-lg text-gray-700 max-w-4xl mx-auto space-y-6 text-left">
               <p>
@@ -674,6 +674,81 @@ This request was sent from the Mentorship Club demo class form.
                   <h3 className="text-xl font-bold text-gray-900 leading-snug">
                     {workshop.title}
                   </h3>
+                  <p className="text-sm text-gray-500">{workshop.format}</p>
+
+                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-4">
+                    {workshop.about[0]}
+                  </p>
+                </div>
+
+                <div className="px-6 pb-6">
+                  <Link
+                    href={`/workshops/${workshop.id}`}
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-900 hover:border-gray-300 hover:bg-gray-50 transition-colors"
+                  >
+                    View Workshop Details
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Parent Workshops Section */}
+      <section className="py-20 bg-gradient-to-br from-purple-50 via-white to-pink-50" id="parent-workshops">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-3">
+              FOR PARENTS
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Workshops designed to help parents support their children's growth with confidence, awareness, and practical skills.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {parentWorkshops.map((workshop, index) => (
+              <div
+                key={workshop.id}
+                className="rounded-3xl border border-gray-100 bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={`/assets/parent/${16 + index}.png`}
+                    alt={workshop.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="p-6 space-y-3">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-purple-600">
+                    <span>{workshop.number}</span>
+                    <span>Parent Workshop</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 leading-snug">
+                    {workshop.title}
+                  </h3>
+                  {workshop.subtitle && (
+                    <p className="text-sm text-gray-600 font-medium">
+                      {workshop.subtitle}
+                    </p>
+                  )}
                   <p className="text-sm text-gray-500">{workshop.format}</p>
 
                   <p className="text-gray-600 text-sm leading-relaxed line-clamp-4">

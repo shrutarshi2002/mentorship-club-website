@@ -15,6 +15,7 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [openFAQ, setOpenFAQ] = useState(null);
   const sectionRefs = useRef({});
 
   const socialLinks = [
@@ -423,12 +424,12 @@ This message was sent from the Mentorship Club contact form.
                 : "translate-y-20 opacity-0"
             }`}
           >
-            <div className="space-y-6">
+            <div className="space-y-4">
               {[
                 {
                   question: "How quickly will I hear back from you?",
                   answer:
-                    "We typically respond to all inquiries within 24 hours during business days. For urgent matters, you can also call us directly.",
+                    "We typically respond to all inquiries within 24 hours during business days.",
                 },
                 {
                   question: "What information should I include in my message?",
@@ -448,12 +449,28 @@ This message was sent from the Mentorship Club contact form.
               ].map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-gradient-to-br from-gray-50 to-blue-50 p-6 rounded-2xl border border-gray-100"
+                  className="bg-white rounded-lg shadow-md overflow-hidden"
                 >
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                    {faq.question}
-                  </h3>
-                  <p className="text-gray-600">{faq.answer}</p>
+                  <button
+                    className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                    onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
+                  >
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      {faq.question}
+                    </h3>
+                    <span
+                      className={`text-2xl transition-transform duration-200 ${
+                        openFAQ === index ? "rotate-45" : ""
+                      }`}
+                    >
+                      +
+                    </span>
+                  </button>
+                  {openFAQ === index && (
+                    <div className="px-6 pb-4">
+                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
