@@ -717,7 +717,7 @@ This request was sent from the Mentorship Club demo class form.
               FOR PARENTS
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Workshops designed to help parents support their children's growth with confidence, awareness, and practical skills.
+              Workshops designed to help parents support their children&apos;s growth with confidence, awareness, and practical skills.
             </p>
           </div>
 

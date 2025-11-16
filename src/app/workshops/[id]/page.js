@@ -218,7 +218,7 @@ export default async function WorkshopDetailPage({ params }) {
                   ✨ Short Caption
                 </h2>
                 <p className="text-xl text-gray-800 font-medium italic">
-                  "{workshop.shortCaption}"
+                  &quot;{workshop.shortCaption}&quot;
                 </p>
               </div>
             )}
